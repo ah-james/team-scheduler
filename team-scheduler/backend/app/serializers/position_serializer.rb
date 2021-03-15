@@ -1,4 +1,5 @@
 class PositionSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :position
+  belongs_to :employee
 end

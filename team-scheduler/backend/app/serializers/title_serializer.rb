@@ -1,4 +1,5 @@
 class TitleSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  attributes :title
+  belongs_to :employee
 end
