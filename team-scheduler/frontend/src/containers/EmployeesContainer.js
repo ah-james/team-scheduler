@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchEmployees } from '../actions/employeesActions'
+import EmployeesForm from '../components/EmployeesForm'
 
 class EmployeesContainer extends React.Component {
 
@@ -12,6 +13,7 @@ class EmployeesContainer extends React.Component {
         return(
             <div>
                 Employees Container
+                <EmployeesForm />
             </div>
         )
     }
