@@ -5,7 +5,7 @@ export default class Weekday extends React.Component {
     render() {
         return(
             <Card>
-                <div>Weekday</div>
+                <div>{this.props.day}</div>
             </Card>
         )
     }
