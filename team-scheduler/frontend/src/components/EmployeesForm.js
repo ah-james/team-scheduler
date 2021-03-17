@@ -1,6 +1,8 @@
 import React from 'react'
+import { addEmployee } from '../actions/employeesActions'
+import { connect } from 'react-redux'
 
-export default class EmployeesForm extends React.Component {
+class EmployeesForm extends React.Component {
     state = {
         name: '',
         image: '',
@@ -9,24 +11,36 @@ export default class EmployeesForm extends React.Component {
         position: ''
     }
 
+    handleChange = (event) => {
+        const { name, value } = event.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        this.props.addGrad(this.state)
+    }   
+
     render() {
         return(
             <div>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label>Name: </label>
                     <input type='text' value={this.state.name} onChange={this.handleChange} name="name" />
                     <br />
                     <label>Image: </label>
-                    <input type='text' value={this.state.name} onChange={this.handleChange} name="image" />
+                    <input type='text' value={this.state.image} onChange={this.handleChange} name="image" />
                     <br />
                     <label>Years: </label>
-                    <input type='number' value={this.state.name} onChange={this.handleChange} name="years" />
+                    <input type='number' value={this.state.years} onChange={this.handleChange} name="years" />
                     <br />
                     <label>Title: </label>
-                    <input type='text' value={this.state.name} onChange={this.handleChange} name="title" />
+                    <select type='dropdown' value={this.state.title} onChange={this.handleChange} name="title" />
                     <br />
-                    <label>Position: </label>
-                    <input type='text' value={this.state.name} onChange={this.handleChange} name="name" />
+                    <label>Positions: </label>
+                    <input type='text' value={this.state.position} onChange={this.handleChange} name="name" />
                     <br />
                     <input type="submit" />
                 </form>
@@ -34,3 +48,5 @@ export default class EmployeesForm extends React.Component {
         )
     }
 }
+
+export default connect(null, { addEmployee })(EmployeesForm)

@@ -2,6 +2,8 @@ const employeeReducer = (state = [], action) => {
     switch(action.type) {
         case 'GET_EMPLOYEES':
             return action.payload
+        case 'ADD_EMPLOYEE':
+            return [...state, action.payload]
         default:
             return state
     }
