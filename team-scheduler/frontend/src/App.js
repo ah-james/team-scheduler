@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
-import Weekday from './containers/Weekday'
-import EmployeesContainer from './containers/EmployeesContainer'
+import { Router } from './components/Router'
 
 
 class App extends React.Component {
@@ -10,7 +9,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Team Scheduler</h1>
-        <EmployeesContainer />
+        <Router />
         {/* <Weekday day="Monday"/>
         <Weekday day="Tuesday"/>
         <Weekday day="Wednesday"/>
