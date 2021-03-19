@@ -20,7 +20,7 @@ class EmployeesForm extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.addGrad(this.state)
+        this.props.addEmployee(this.state)
     }   
 
     render() {
@@ -36,12 +36,12 @@ class EmployeesForm extends React.Component {
                     <label>Years: </label>
                     <input type='number' value={this.state.years} onChange={this.handleChange} name="years" />
                     <br />
-                    <label>Title: </label>
+                    {/* <label>Title: </label>
                     <select type='dropdown' value={this.state.title} onChange={this.handleChange} name="title" />
                     <br />
                     <label>Positions: </label>
                     <input type='checkbox' value={this.state.position} onChange={this.handleChange} name="name" />
-                    <br />
+                    <br /> */}
                     <input type="submit" />
                 </form>
             </div>

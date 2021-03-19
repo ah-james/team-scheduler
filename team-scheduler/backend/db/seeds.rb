@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Employee.create(name: 'Tony Stark', image: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.cinemablend.com%2Ffilter%3Ascale%2Fquill%2Fd%2F9%2F5%2Fa%2Fc%2F9%2Fd95ac9d6f0acd56e12b9452301c763cd1aeffe51.jpg%3Fmw%3D600&imgrefurl=https%3A%2F%2Fwww.cinemablend.com%2Fnews%2F2471343%2Fapparently-robert-downey-jr-didnt-want-to-do-tony-starks-last-big-line-in-avengers-endgame&tbnid=cvAv9wBiPbph3M&vet=12ahUKEwjWw8KNybXvAhWDGd8KHcpuDVAQMygCegUIARDZAQ..i&docid=Q3SNQoywtwf0gM&w=600&h=300&q=tony%20stark&ved=2ahUKEwjWw8KNybXvAhWDGd8KHcpuDVAQMygCegUIARDZAQ', years: 4)
+Employee.create(name: 'Tony Stark', image: 'https://upload.wikimedia.org/wikipedia/en/f/f2/Robert_Downey_Jr._as_Tony_Stark_in_Avengers_Infinity_War.jpg', years: 4)
 
 Position.create(position: "Register", employee_id: 1)
 
