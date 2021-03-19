@@ -40,7 +40,7 @@ class EmployeesForm extends React.Component {
                     <select type='dropdown' value={this.state.title} onChange={this.handleChange} name="title" />
                     <br />
                     <label>Positions: </label>
-                    <input type='text' value={this.state.position} onChange={this.handleChange} name="name" />
+                    <input type='checkbox' value={this.state.position} onChange={this.handleChange} name="name" />
                     <br />
                     <input type="submit" />
                 </form>
