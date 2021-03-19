@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import { fetchEmployees } from '../actions/employeesActions'
 import { fetchPositions } from '../actions/positionsActions'
 import { fetchTitles } from '../actions/titlesActions'
+import { deleteEmployee } from '../actions/employeesActions'
 import EmployeesForm from '../components/EmployeesForm'
-// import EmployeeCard from '../components/EmployeeCard'
+import EmployeeCard from '../components/EmployeeCard'
 
 class EmployeesContainer extends React.Component {
 
@@ -15,26 +16,27 @@ class EmployeesContainer extends React.Component {
     }
 
     render() {
-        debugger
         return(
             <div>
                 Employees Container
-                {/* {this.props.employees.map(employee => <EmployeeCard employee={employee} />)} */}
+                <EmployeesForm />
+                {this.props.employees.map((employee) => <EmployeeCard key={employee.id} employee={employee} delete={this.props.deleteEmployee} />)}
             </div>
         )
     }
 }
 
-// const mapStateToProps = state => {
-//     return { employees: state.employees }
-// }
+const mapStateToProps = state => {
+    return { employees: state.employees }
+}
 
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchEmployees: () => dispatch(fetchEmployees()),
         fetchPositions: () => dispatch(fetchPositions()),
-        fetchTitles: () => dispatch(fetchTitles())
+        fetchTitles: () => dispatch(fetchTitles()),
+        deleteEmployee: employee => dispatch(deleteEmployee(employee))
     }
 }
 
-export default connect(null, mapDispatchToProps)(EmployeesContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeesContainer)

@@ -4,6 +4,8 @@ const employeeReducer = (state = [], action) => {
             return action.payload
         case 'ADD_EMPLOYEE':
             return [...state, action.payload]
+        case 'DELETE_EMPLOYEE':
+            return [...state.filter(employee => employee !== action.payload)]
         default:
             return state
     }

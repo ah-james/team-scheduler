@@ -6,7 +6,7 @@ const EmployeeCard = (props) => {
             <h2>{props.employee.attributes.name}</h2>
             <img src={props.employee.attributes.image} />
             <p>Experience: {props.employee.attributes.years} Years</p>
-            <p></p>
+            <button name="delete" onClick={() => props.delete(props.employee.id)}>Delete</button>
         </div>
     )
 }

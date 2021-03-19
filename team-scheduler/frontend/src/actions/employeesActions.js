@@ -17,3 +17,18 @@ export const addEmployee = employee => {
         .then(json => dispatch({type: "ADD_EMPLOYEES", payload: json}))
     }
 }
+
+export const deleteEmployee = employee => {
+    return (dispatch) => {
+        const configObj = {
+            method: "Delete",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        }
+        fetch(`http://localhost:3000/employees/${employee}`, configObj)
+        .then(resp => resp.json())
+        .then(json => dispatch({type: "DELETE_EMPLOYEE", payload: json}))
+    }
+}
