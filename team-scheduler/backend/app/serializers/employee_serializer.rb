@@ -1,6 +1,5 @@
 class EmployeeSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :name, :image, :years
-  has_many :positions
-  has_many :titles
+  attributes :name, :image, :years, :title_id
+  belongs_to :title
 end
