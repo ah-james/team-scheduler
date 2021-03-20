@@ -1,13 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchEmployees } from '../actions/employeesActions'
+import { editEmployee, fetchEmployees } from '../actions/employeesActions'
 import { fetchPositions } from '../actions/positionsActions'
 import { fetchTitles } from '../actions/titlesActions'
 import { deleteEmployee } from '../actions/employeesActions'
 import EmployeesForm from '../components/EmployeesForm'
+import EditEmployeeForm from '../components/EditEmployeeForm'
 import EmployeeCard from '../components/EmployeeCard'
 
 class EmployeesContainer extends React.Component {
+    state = {
+        employeeId: false
+    }
+
+    handleEdit = employee => {
+        this.setState({
+            employeeId: employee.id
+        })
+    }
+
+    resetStudentId = () => {
+        this.setState({ studentId: false})
+    }
 
     componentDidMount() {
         this.props.fetchEmployees()
@@ -19,8 +33,9 @@ class EmployeesContainer extends React.Component {
         return(
             <div>
                 Employees Container
-                <EmployeesForm />
-                {this.props.employees.map((employee) => <EmployeeCard key={employee.id} employee={employee} delete={this.props.deleteEmployee} />)}
+                {this.state.employeeId ? <EditEmployeeForm resetEmployeeId={this.resetStudentId} employeeId={this.state.employeeId} /> : <EmployeesForm />}
+                
+                {this.props.employees.map((employee) => <EmployeeCard key={employee.id} employee={employee} handleEdit={this.handleEdit} delete={this.props.deleteEmployee} />)}
             </div>
         )
     }
@@ -35,7 +50,8 @@ const mapDispatchToProps = (dispatch) => {
         fetchEmployees: () => dispatch(fetchEmployees()),
         fetchPositions: () => dispatch(fetchPositions()),
         fetchTitles: () => dispatch(fetchTitles()),
-        deleteEmployee: employee => dispatch(deleteEmployee(employee))
+        deleteEmployee: employee => dispatch(deleteEmployee(employee)),
+        // editEmployee: employee => dispatch(editEmployee(employee))
     }
 }
 
