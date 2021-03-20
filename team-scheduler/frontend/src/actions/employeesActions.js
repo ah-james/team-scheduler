@@ -20,15 +20,25 @@ export const addEmployee = employee => {
 
 export const deleteEmployee = employee => {
     return (dispatch) => {
-        const configObj = {
+        fetch(`http://localhost:3000/employees/${employee}`, {
             method: "Delete",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             }
-        }
-        fetch(`http://localhost:3000/employees/${employee}`, configObj)
+        })
         .then(resp => resp.json())
         .then(json => dispatch({type: "DELETE_EMPLOYEE", payload: json}))
+    }
+}
+
+export const editEmployee = employee => {
+    return (dispatch) => {
+        dispatch({type: 'EDIT_EMPLOYEE', payload: employee})
+        fetch(`http://localhost:3000/employees/${employee.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(employee),
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
+        })
     }
 }
