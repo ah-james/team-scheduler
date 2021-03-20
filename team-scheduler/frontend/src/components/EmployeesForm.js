@@ -7,8 +7,7 @@ class EmployeesForm extends React.Component {
         name: '',
         image: '',
         years: 0,
-        title: '',
-        position: ''
+        title_id: '',
     }
 
     handleChange = (event) => {
@@ -20,10 +19,12 @@ class EmployeesForm extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
+        debugger
         this.props.addEmployee(this.state)
     }   
 
     render() {
+        // debugger
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -34,14 +35,14 @@ class EmployeesForm extends React.Component {
                     <input type='text' value={this.state.image} onChange={this.handleChange} name="image" />
                     <br />
                     <label>Years: </label>
-                    <input type='number' value={this.state.years} onChange={this.handleChange} name="years" />
+                    <input type='number' value={parseInt(this.state.years)} onChange={this.handleChange} name="years" />
                     <br />
-                    {/* <label>Title: </label>
-                    <select type='dropdown' value={this.state.title} onChange={this.handleChange} name="title" />
+                    <label>Title: </label>
+                    <select type='dropdown' onChange={this.handleChange} name="title_id">
+                        <option>        </option>
+                        {this.props.titles.map((title, id) => <option value={id}>{title.attributes.title}</option>)}
+                    </select>
                     <br />
-                    <label>Positions: </label>
-                    <input type='checkbox' value={this.state.position} onChange={this.handleChange} name="name" />
-                    <br /> */}
                     <input type="submit" />
                 </form>
             </div>
@@ -49,4 +50,10 @@ class EmployeesForm extends React.Component {
     }
 }
 
-export default connect(null, { addEmployee })(EmployeesForm)
+const mapStateToProps = state => {
+    return {
+        titles: state.titles
+    }
+}
+
+export default connect(mapStateToProps, { addEmployee })(EmployeesForm)

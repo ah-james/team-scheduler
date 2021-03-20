@@ -8,6 +8,7 @@ class EditEmployeeForm extends Component {
         name: '',
         image: '',
         years: 0,
+        title_id: '',
     }
 
     componentDidMount() {
@@ -51,7 +52,13 @@ class EditEmployeeForm extends Component {
                     <label>Years: </label>
                     <input type='number' value={this.state.years} onChange={this.handleChange} name="years" />
                     <br />
-                    <input type="submit" value="Edit Student" />
+                    <label>Title: </label>
+                    <select type='dropdown' onChange={this.handleChange} name="title">
+                        <option>        </option>
+                        {this.props.titles.map((title, id) => <option value={id}>{title.attributes.title}</option>)}
+                    </select>
+                    <br />
+                    <input type="submit" value="Edit Employee" />
                 </form>
             </div>
         )
@@ -59,7 +66,10 @@ class EditEmployeeForm extends Component {
 }
 
 const mapStateToProps = state => {
-    return { employees: state.employees }
+    return { 
+        employees: state.employees,
+        titles: state.titles
+    }
 }
 
 export default connect(mapStateToProps, { editEmployee })(EditEmployeeForm)

@@ -14,7 +14,7 @@ export const addEmployee = employee => {
             headers: {'Content-Type': 'application/json'}
         })
         .then(resp => resp.json())
-        .then(json => dispatch({type: "ADD_EMPLOYEES", payload: json}))
+        .then(json => dispatch({type: "ADD_EMPLOYEE", payload: json}))
     }
 }
 
@@ -28,7 +28,7 @@ export const deleteEmployee = employee => {
             }
         })
         .then(resp => resp.json())
-        .then(json => dispatch({type: "DELETE_EMPLOYEE", payload: json}))
+        .then(json => dispatch({type: "DELETE_EMPLOYEE", payload: json['data']}))
     }
 }
 
