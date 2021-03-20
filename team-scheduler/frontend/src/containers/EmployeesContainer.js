@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { editEmployee, fetchEmployees } from '../actions/employeesActions'
-import { fetchPositions } from '../actions/positionsActions'
+import { fetchEmployees } from '../actions/employeesActions'
 import { fetchTitles } from '../actions/titlesActions'
 import { deleteEmployee } from '../actions/employeesActions'
 import EmployeesForm from '../components/EmployeesForm'
@@ -25,11 +24,11 @@ class EmployeesContainer extends React.Component {
 
     componentDidMount() {
         this.props.fetchEmployees()
-        this.props.fetchPositions()
         this.props.fetchTitles()
     }
 
     render() {
+        // debugger 
         return(
             <div>
                 Employees Container
@@ -42,16 +41,17 @@ class EmployeesContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return { employees: state.employees }
+    return { 
+        employees: state.employees,
+        titles: state.titles
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchEmployees: () => dispatch(fetchEmployees()),
-        fetchPositions: () => dispatch(fetchPositions()),
         fetchTitles: () => dispatch(fetchTitles()),
         deleteEmployee: employee => dispatch(deleteEmployee(employee)),
-        // editEmployee: employee => dispatch(editEmployee(employee))
     }
 }
 
