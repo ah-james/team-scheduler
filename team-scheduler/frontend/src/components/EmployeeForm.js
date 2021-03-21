@@ -26,23 +26,25 @@ class EmployeeForm extends React.Component {
     render() {
         // debugger
         return(
-            <div class='mb-3'>
+            <div>
+                <br />
+                <h2>Create a New Employee</h2><br />
                 <form onSubmit={this.handleSubmit}>
-                    <label class="form-label">Name: </label>
-                    <input type='text' value={this.state.name} onChange={this.handleChange} name="name" class="form-control"/>
-                    <br />
-                    <label class="form-label">Image: </label>
-                    <input type='text' value={this.state.image} onChange={this.handleChange} name="image" class="form-control"/>
-                    <br />
-                    <label class="form-label">Years: </label>
-                    <input type='number' value={parseInt(this.state.years)} onChange={this.handleChange} name="years" class="form-control"/>
-                    <br />
-                    <label class="form-label">Title: </label>
+                    <label>Name: </label>
+                    <input type='text' value={this.state.name} onChange={this.handleChange} name="name"/>
+                    <br /><br />
+                    <label>Image: </label>
+                    <input type='text' value={this.state.image} onChange={this.handleChange} name="image"/>
+                    <br /><br />
+                    <label>Years: </label>
+                    <input type='number' value={parseInt(this.state.years)} onChange={this.handleChange} name="years"/>
+                    <br /><br />
+                    <label>Title: </label>
                     <select type='dropdown' onChange={this.handleChange} name="title_id">
                         <option>        </option>
                         {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title}</option>)}
                     </select>
-                    <br />
+                    <br /><br />
                     <input type="submit" />
                 </form>
             </div>

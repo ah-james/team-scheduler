@@ -1,8 +1,8 @@
 import React from 'react'
 
 const EmployeeCard = (props) => {
-        return(
-        <div>
+    return(
+        <div class="col-md-3">
             <h2>{props.employee.attributes.name}</h2>
             <img src={props.employee.attributes.image} alt="employee" />
             <p>Experience: {props.employee.attributes.years} Years</p>

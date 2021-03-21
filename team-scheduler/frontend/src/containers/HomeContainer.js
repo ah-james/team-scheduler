@@ -13,8 +13,7 @@ class HomeContainer extends React.Component {
     render(){
         // debugger
         return(
-            <div>
-                {/* <h1>Home Container</h1> */}
+            <div class="row">
                 <WeekdayCard weekday={'Monday'} titles={this.props.titles} employees={this.props.employees} />
                 <WeekdayCard weekday={'Tuesday'} titles={this.props.titles} employees={this.props.employees} />
                 <WeekdayCard weekday={'Wednesday'} titles={this.props.titles} employees={this.props.employees} />

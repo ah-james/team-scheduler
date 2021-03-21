@@ -19,7 +19,7 @@ class WeekdayCard extends React.Component {
     render() {
         // debugger
         return(
-            <div>
+            <div class="col-md-3">
                 <h1>{this.props.weekday}</h1>
                 {this.props.titles.map(title => 
                 <div class="home-dropdown">

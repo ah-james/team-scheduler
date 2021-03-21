@@ -32,10 +32,12 @@ class EmployeesContainer extends React.Component {
         // debugger 
         return(
             <div>
-                Employees Container
                 {this.state.employeeId ? <EditEmployeeForm resetEmployeeId={this.resetStudentId} employeeId={this.state.employeeId} /> : <EmployeeForm />}
-                
-                {this.props.employees.map((employee) => <EmployeeCard key={employee.id} employee={employee} handleEdit={this.handleEdit} delete={this.props.deleteEmployee} />)}
+                <br/><br/>
+                <div class="row">
+                    {this.props.employees.map((employee) => 
+                        <EmployeeCard key={employee.id} employee={employee} handleEdit={this.handleEdit} delete={this.props.deleteEmployee} />)}
+                </div>
             </div>
         )
     }
