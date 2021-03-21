@@ -19,7 +19,7 @@ class EmployeesForm extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        debugger
+        // debugger
         this.props.addEmployee(this.state)
     }   
 
@@ -40,7 +40,7 @@ class EmployeesForm extends React.Component {
                     <label>Title: </label>
                     <select type='dropdown' onChange={this.handleChange} name="title_id">
                         <option>        </option>
-                        {this.props.titles.map((title, id) => <option value={id}>{title.attributes.title}</option>)}
+                        {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title}</option>)}
                     </select>
                     <br />
                     <input type="submit" />
