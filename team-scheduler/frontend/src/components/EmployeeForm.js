@@ -26,18 +26,18 @@ class EmployeeForm extends React.Component {
     render() {
         // debugger
         return(
-            <div>
+            <div class='mb-3'>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Name: </label>
-                    <input type='text' value={this.state.name} onChange={this.handleChange} name="name" />
+                    <label class="form-label">Name: </label>
+                    <input type='text' value={this.state.name} onChange={this.handleChange} name="name" class="form-control"/>
                     <br />
-                    <label>Image: </label>
-                    <input type='text' value={this.state.image} onChange={this.handleChange} name="image" />
+                    <label class="form-label">Image: </label>
+                    <input type='text' value={this.state.image} onChange={this.handleChange} name="image" class="form-control"/>
                     <br />
-                    <label>Years: </label>
-                    <input type='number' value={parseInt(this.state.years)} onChange={this.handleChange} name="years" />
+                    <label class="form-label">Years: </label>
+                    <input type='number' value={parseInt(this.state.years)} onChange={this.handleChange} name="years" class="form-control"/>
                     <br />
-                    <label>Title: </label>
+                    <label class="form-label">Title: </label>
                     <select type='dropdown' onChange={this.handleChange} name="title_id">
                         <option>        </option>
                         {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title}</option>)}
