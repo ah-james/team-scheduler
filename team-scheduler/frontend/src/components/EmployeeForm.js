@@ -21,6 +21,12 @@ class EmployeeForm extends React.Component {
         // debugger
         event.preventDefault()
         this.props.addEmployee(this.state)
+        this.setState({
+            name: '',
+            image: '',
+            years: 0,
+            title_id: '',
+        })
     }   
 
     render() {
