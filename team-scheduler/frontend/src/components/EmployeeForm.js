@@ -2,7 +2,7 @@ import React from 'react'
 import { addEmployee } from '../actions/employeesActions'
 import { connect } from 'react-redux'
 
-class EmployeesForm extends React.Component {
+class EmployeeForm extends React.Component {
     state = {
         name: '',
         image: '',
@@ -17,9 +17,9 @@ class EmployeesForm extends React.Component {
         })
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault()
+    handleSubmit = event => {
         // debugger
+        event.preventDefault()
         this.props.addEmployee(this.state)
     }   
 
@@ -56,4 +56,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { addEmployee })(EmployeesForm)
+export default connect(mapStateToProps, { addEmployee })(EmployeeForm)

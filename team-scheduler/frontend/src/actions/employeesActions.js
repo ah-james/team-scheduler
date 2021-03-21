@@ -14,7 +14,7 @@ export const addEmployee = employee => {
             headers: {'Content-Type': 'application/json'}
         })
         .then(resp => resp.json())
-        .then(json => dispatch({type: "ADD_EMPLOYEE", payload: json}))
+        .then(json => dispatch({type: "ADD_EMPLOYEE", payload: json['data']}))
     }
 }
 
@@ -34,11 +34,12 @@ export const deleteEmployee = employee => {
 
 export const editEmployee = employee => {
     return (dispatch) => {
-        dispatch({type: 'EDIT_EMPLOYEE', payload: employee})
         fetch(`http://localhost:3000/employees/${employee.id}`, {
         method: 'PATCH',
         body: JSON.stringify(employee),
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
         })
+        .then(resp => resp.json())
+        .then(json => dispatch({type: 'EDIT_EMPLOYEE', payload: json['data']}))
     }
 }
