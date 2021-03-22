@@ -5,7 +5,7 @@ const TitleCard = (props) => {
         <div>
             <h2>{props.title.attributes.title}</h2>
             {props.employees.filter(employee => employee.attributes.title_id === parseInt(props.title.id)).map(filteredEmployee => (
-                <li>{filteredEmployee.attributes.name}</li>
+                <li>{filteredEmployee.attributes.name} - {filteredEmployee.attributes.years} Years</li>
             ))}
         </div>
     )

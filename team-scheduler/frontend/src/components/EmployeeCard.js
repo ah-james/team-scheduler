@@ -7,7 +7,7 @@ const EmployeeCard = (props) => {
             <img src={props.employee.attributes.image} alt="employee" />
             <p>Experience: {props.employee.attributes.years} Years</p>
             <button name="delete" onClick={() => props.delete(props.employee.id)}>Fire</button>
-            {/* <button name="edit" onClick={() => props.handleEdit(props.employee)}>Edit</button> */}
+            <button name="edit" onClick={() => props.handleEdit(props.employee)}>Edit</button>
         </div>
     )
 }

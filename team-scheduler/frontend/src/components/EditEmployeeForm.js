@@ -29,7 +29,8 @@ class EditEmployeeForm extends Component {
             id: employee.id,
             name: employee.name,
             image: employee.image,
-            years: employee.years
+            years: employee.years,
+            title_id: employee.title_id
         })
     }
 
@@ -42,22 +43,24 @@ class EditEmployeeForm extends Component {
     render() {
         return(
             <div>
-                <form onSubmit={this.update}>
+                <br />
+                <h2>Edit Your Employee</h2>
+                <form onSubmit={this.update}><br />
                     <label>Name: </label>
                     <input type='text' value={this.state.name} onChange={this.handleChange} name="name" />
-                    <br />
+                    <br /><br />
                     <label>Image: </label>
                     <input type='text' value={this.state.image} onChange={this.handleChange} name="image" />
-                    <br />
+                    <br /><br />
                     <label>Years: </label>
                     <input type='number' value={this.state.years} onChange={this.handleChange} name="years" />
-                    <br />
+                    <br /><br />
                     <label>Title: </label>
                     <select type='dropdown' onChange={this.handleChange} name="title">
                         <option>        </option>
-                        {this.props.titles.map((title, id) => <option value={id}>{title.attributes.title}</option>)}
+                        {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title}</option>)}
                     </select>
-                    <br />
+                    <br /><br />
                     <input type="submit" value="Edit Employee" />
                 </form>
             </div>
