@@ -11,7 +11,6 @@ class HomeContainer extends React.Component {
         this.props.fetchTitles()
     }
     render(){
-        // debugger
         return(
             <div class="row">
                 <WeekdayCard weekday={'Monday'} titles={this.props.titles} employees={this.props.employees} />
