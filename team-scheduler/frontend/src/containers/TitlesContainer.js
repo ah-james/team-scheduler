@@ -4,6 +4,7 @@ import TitleCard from '../components/TitleCard'
 import TitleForm from '../components/TitleForm'
 import { fetchTitles } from '../actions/titlesActions'
 import { fetchEmployees } from '../actions/employeesActions'
+import { deleteTitle } from '../actions/titlesActions'
 
 class TitlesContainer extends React.Component {
 
@@ -16,7 +17,7 @@ class TitlesContainer extends React.Component {
         return(
             <div>
                 <TitleForm />
-                {this.props.titles.map(title => <TitleCard title={title} employees={this.props.employees} />)}
+                {this.props.titles.map(title => <TitleCard title={title} employees={this.props.employees} delete={this.props.deleteTitle} />)}
             </div>
         )
     }
@@ -33,6 +34,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchTitles: () => dispatch(fetchTitles()),
         fetchEmployees: () => dispatch(fetchEmployees()),
+        deleteTitle: title => dispatch(deleteTitle(title))
     }
 }
 

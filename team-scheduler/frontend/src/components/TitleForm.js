@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 
 class TitleForm extends React.Component {
     state = {
-        title: ''
+        title_name: '',
+        description: ''
     }
 
     handleChange = (event) => {
@@ -18,7 +19,8 @@ class TitleForm extends React.Component {
         event.preventDefault()
         this.props.createTitle(this.state)
         this.setState({
-            title: ''
+            title_name: '',
+            description: ''
         })
     }  
 
@@ -27,7 +29,10 @@ class TitleForm extends React.Component {
             <div>
                 <h2>Create a New Title</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <input type='text' value={this.state.title} onChange={this.handleChange} name="title" />
+                    <label>Title: </label>
+                    <input type='text' value={this.state.title_name} onChange={this.handleChange} name="title_name" />
+                    <label>Description: </label>
+                    <input type='text' value={this.state.description} onChange={this.handleChange} name="description" />
                     <input type='submit' />
                 </form>
             </div>
