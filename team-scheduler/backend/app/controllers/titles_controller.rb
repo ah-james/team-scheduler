@@ -22,6 +22,6 @@ class TitlesController < ApplicationController
     private
 
     def title_params
-        params.require(:title).permit(:title)
+        params.require(:title).permit(:title_name, :description)
     end
 end
