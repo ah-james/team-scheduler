@@ -21,7 +21,7 @@ export const addEmployee = employee => {
 export const deleteEmployee = employee => {
     return (dispatch) => {
         fetch(`http://localhost:3000/employees/${employee}`, {
-            method: "Delete",
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"

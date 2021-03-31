@@ -20,8 +20,8 @@ export const createTitle = title => {
 
 export const deleteTitle = employee => {
     return (dispatch) => {
-        fetch(`http://localhost:3000/titles/${employee.id}`, {
-            method: "Delete",
+        fetch(`http://localhost:3000/titles/${employee}`, {
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
