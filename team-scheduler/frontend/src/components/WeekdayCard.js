@@ -1,5 +1,5 @@
 import React from 'react'
-// import EmployeesContainer from '../containers/EmployeesContainer'
+import EmployeeSelect from './EmployeeSelect'
 
 const WeekdayCard = (props) => {
     return(
@@ -8,10 +8,7 @@ const WeekdayCard = (props) => {
             {props.titles.map(title => 
             <div class="home-dropdown">
             <label>{title.attributes.title}<br/></label>
-            <select>
-                <option></option>
-                {props.employees.map(employee => <option>{employee.attributes.name}</option>)}
-            </select>
+            <EmployeeSelect employees={props.employees}/>
             </div>
             )}
         </div>
