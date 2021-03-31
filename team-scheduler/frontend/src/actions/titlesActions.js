@@ -6,15 +6,15 @@ export const fetchTitles = () => {
     }
 }
 
-export const createTitle = () => {
+export const createTitle = title => {
     return (dispatch) => {
         fetch('http://localhost:3000/titles', {
             method: 'POST',
-            body: JSON.stringify(employee),
+            body: JSON.stringify(title),
             headers: {'Content-Type': 'application/json'}
         })
         .then(resp => resp.json())
-        .then(json => dispatch({ type: 'ADD_TITLE', payload: json['data']}))
+        .then(json => dispatch({type: 'ADD_TITLE', payload: json['data']}))
     }
 }
 

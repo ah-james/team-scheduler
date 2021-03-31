@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import TitleCard from '../components/TitleCard'
+import TitleForm from '../components/TitleForm'
 import { fetchTitles } from '../actions/titlesActions'
 import { fetchEmployees } from '../actions/employeesActions'
 
@@ -14,6 +15,7 @@ class TitlesContainer extends React.Component {
     render() {
         return(
             <div>
+                <TitleForm />
                 {this.props.titles.map(title => <TitleCard title={title} employees={this.props.employees} />)}
             </div>
         )

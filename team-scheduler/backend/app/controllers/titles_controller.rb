@@ -5,7 +5,7 @@ class TitlesController < ApplicationController
     end
 
     def create
-        title = Title.find_by(id: params[:id])
+        title = Title.new(title_params)
         if title.save
             render json: TitleSerializer.new(title)
         else
@@ -17,5 +17,11 @@ class TitlesController < ApplicationController
         title = Title.find_by(id: params[:id])
         title.destroy
         render json: { error: "title didn't delete" }
+    end
+
+    private
+
+    def title_params
+        params.require(:title).permit(:title)
     end
 end

@@ -18,7 +18,6 @@ class EmployeeForm extends React.Component {
     }
 
     handleSubmit = event => {
-        // debugger
         event.preventDefault()
         this.props.addEmployee(this.state)
         this.setState({
