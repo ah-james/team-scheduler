@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import { Router } from './components/Router'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 class App extends React.Component {
@@ -23,6 +23,9 @@ class App extends React.Component {
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#"><Link to='/employees'>Employees</Link></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"><Link to='/about'>About</Link></a>
               </li>
             </ul>
           </div>         
