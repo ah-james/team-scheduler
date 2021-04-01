@@ -58,7 +58,7 @@ class EditEmployeeForm extends Component {
                     <br /><br />
                     <label>Title: </label>
                     <select type='dropdown' onChange={this.handleChange} name="title">
-                        <option>        </option>
+                        <option value='0'>        </option>
                         {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
                     </select>
                     <br /><br />

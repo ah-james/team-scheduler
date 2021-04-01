@@ -29,7 +29,6 @@ class EmployeeForm extends React.Component {
     }   
 
     render() {
-        // debugger
         return(
             <div>
                 <br />

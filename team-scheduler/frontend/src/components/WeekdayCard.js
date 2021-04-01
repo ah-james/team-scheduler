@@ -6,29 +6,14 @@ const WeekdayCard = (props) => {
         <div class="col-md-3">
             <h1>{props.weekday}</h1>
             {props.titles.map(title => 
-            <div class="home-dropdown">
-            <label>{title.attributes.title}<br/></label>
-            <EmployeeSelect employees={props.employees}/>
-            </div>
+                <div id={`${props.weekday}-${title.attributes.title_name}-dropdown`}>
+                    <label>{title.attributes.title_name}<br/></label>
+                    <EmployeeSelect weekday={props.weekday} employees={props.employees}/>
+                </div>
             )}
+            <button onClick={() =>props.handleClick()}>Lock</button>
         </div>
     )
 }
 
 export default WeekdayCard
-
-
-// filteredEmployees() {
-//     let filteredEmployees = []
-//     for (let i = 0; i < this.props.employees.length; i++) {
-//         for (let j = 0; j < this.props.titles.length; j++) {
-//             if (this.props.employees[i].attributes.title_id === parseInt(this.props.titles[j].id)) {
-//                 filteredEmployees.push(this.props.employees[i].attributes.name)
-//             }
-//         }
-//     }
-//     return filteredEmployees
-// }
-
-
-
