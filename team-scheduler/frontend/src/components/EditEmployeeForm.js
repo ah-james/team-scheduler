@@ -27,15 +27,16 @@ class EditEmployeeForm extends Component {
         const employee = employees.find(employee => employee.id === employeeId)
         this.setState({
             id: employee.id,
-            name: employee.name,
-            image: employee.image,
-            years: employee.years,
-            title_id: employee.title_id
+            name: employee.attributes.name,
+            image: employee.attributes.image,
+            years: employee.attributes.years,
+            title_id: employee.attributes.title_id
         })
     }
 
     update = event => {
         event.preventDefault()
+        debugger
         this.props.editEmployee(this.state)
         this.props.resetEmployeeId()
     }
@@ -58,7 +59,7 @@ class EditEmployeeForm extends Component {
                     <label>Title: </label>
                     <select type='dropdown' onChange={this.handleChange} name="title">
                         <option>        </option>
-                        {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title}</option>)}
+                        {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
                     </select>
                     <br /><br />
                     <input type="submit" value="Edit Employee" />

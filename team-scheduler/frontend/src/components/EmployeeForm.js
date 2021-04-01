@@ -47,7 +47,7 @@ class EmployeeForm extends React.Component {
                     <label>Title: </label>
                     <select type='dropdown' onChange={this.handleChange} name="title_id">
                         <option>        </option>
-                        {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title}</option>)}
+                        {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
                     </select>
                     <br /><br />
                     <input type="submit" />
