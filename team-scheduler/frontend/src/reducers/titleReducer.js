@@ -5,7 +5,7 @@ const titleReducer = (state = [], action) => {
         case 'ADD_TITLE':
             return [...state, action.payload]
         case 'DELETE_TITLE':
-            return [...state.filter(title => title !== action.payload)]
+            return [...state.filter(title => title.id !== action.payload.id)]
         default:
             return state
     }

@@ -16,7 +16,7 @@ class TitlesController < ApplicationController
     def destroy
         title = Title.find_by(id: params[:id])
         title.destroy
-        render json: { error: "title didn't delete" }
+        render json: { id: params[:id] }
     end
 
     private
