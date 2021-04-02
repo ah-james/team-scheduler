@@ -34,7 +34,7 @@ class EmployeesController < ApplicationController
     def destroy
         employee = Employee.find_by(id: params[:id])
         employee.destroy
-        render json: { message: 'employee has been deleted' }
+        render json: { id: params[:id] }
     end
 
     private

@@ -28,7 +28,7 @@ export const deleteEmployee = employee => {
             }
         })
         .then(resp => resp.json())
-        .then(json => dispatch({type: "DELETE_EMPLOYEE", payload: json['data']}))
+        .then(json => dispatch({type: "DELETE_EMPLOYEE", payload: json}))
     }
 }
 

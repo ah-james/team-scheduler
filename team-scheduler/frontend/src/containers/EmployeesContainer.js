@@ -19,8 +19,8 @@ class EmployeesContainer extends React.Component {
         })
     }
 
-    resetStudentId = () => {
-        this.setState({ studentId: false})
+    resetEmployeeId = () => {
+        this.setState({ employeeId: false})
     }
 
     componentDidMount() {
@@ -32,7 +32,7 @@ class EmployeesContainer extends React.Component {
         // debugger 
         return(
             <div>
-                {this.state.employeeId ? <EditEmployeeForm resetEmployeeId={this.resetStudentId} employeeId={this.state.employeeId} /> : <EmployeeForm />}
+                {this.state.employeeId ? <EditEmployeeForm resetEmployeeId={this.resetEmployeeId} employeeId={this.state.employeeId} /> : <EmployeeForm />}
                 <br/><br/>
                 <div class="row">
                     {this.props.employees.map((employee) => 

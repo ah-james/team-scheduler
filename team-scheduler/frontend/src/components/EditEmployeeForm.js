@@ -36,7 +36,6 @@ class EditEmployeeForm extends Component {
 
     update = event => {
         event.preventDefault()
-        debugger
         this.props.editEmployee(this.state)
         this.props.resetEmployeeId()
     }
