@@ -11,21 +11,16 @@ class HomeContainer extends React.Component {
         this.props.fetchTitles()
     }
 
-    handleClick = () => {
-        debugger
-        // selectors[0].options[selectors[0].selectedIndex].text
-    }
-
     render(){
         return(
             <div class="row">
-                <WeekdayCard weekday={'Monday'} titles={this.props.titles} employees={this.props.employees} handleClick={this.handleClick} />
-                <WeekdayCard weekday={'Tuesday'} titles={this.props.titles} employees={this.props.employees} handleClick={this.handleClick} />
-                <WeekdayCard weekday={'Wednesday'} titles={this.props.titles} employees={this.props.employees} handleClick={this.handleClick} />
-                <WeekdayCard weekday={'Thursday'} titles={this.props.titles} employees={this.props.employees} handleClick={this.handleClick} />
-                <WeekdayCard weekday={'Friday'} titles={this.props.titles} employees={this.props.employees} handleClick={this.handleClick} />
-                <WeekdayCard weekday={'Saturday'} titles={this.props.titles} employees={this.props.employees} handleClick={this.handleClick} />
-                <WeekdayCard weekday={'Sunday'} titles={this.props.titles} employees={this.props.employees} handleClick={this.handleClick} />
+                <WeekdayCard weekday={'Monday'} titles={this.props.titles} employees={this.props.employees} />
+                <WeekdayCard weekday={'Tuesday'} titles={this.props.titles} employees={this.props.employees} />
+                <WeekdayCard weekday={'Wednesday'} titles={this.props.titles} employees={this.props.employees} />
+                <WeekdayCard weekday={'Thursday'} titles={this.props.titles} employees={this.props.employees} />
+                <WeekdayCard weekday={'Friday'} titles={this.props.titles} employees={this.props.employees} />
+                <WeekdayCard weekday={'Saturday'} titles={this.props.titles} employees={this.props.employees} />
+                <WeekdayCard weekday={'Sunday'} titles={this.props.titles} employees={this.props.employees} />
             </div>
         )
     }

@@ -11,7 +11,6 @@ const WeekdayCard = (props) => {
                     <EmployeeSelect weekday={props.weekday} employees={props.employees}/>
                 </div>
             )}
-            <button onClick={() =>props.handleClick()}>Lock</button>
         </div>
     )
 }
