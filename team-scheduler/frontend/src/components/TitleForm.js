@@ -31,8 +31,10 @@ class TitleForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>Title: </label>
                     <input type='text' value={this.state.title_name} onChange={this.handleChange} name="title_name" />
+                    <br /><br />
                     <label>Description: </label>
                     <input type='text' value={this.state.description} onChange={this.handleChange} name="description" />
+                    <br /><br />
                     <input type='submit' />
                 </form>
             </div>
@@ -40,10 +42,4 @@ class TitleForm extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        titles: state.titles
-    }
-}
-
-export default connect(mapStateToProps, { createTitle })(TitleForm)
+export default connect(null, { createTitle })(TitleForm)
