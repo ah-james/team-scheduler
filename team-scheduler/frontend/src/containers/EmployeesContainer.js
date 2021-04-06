@@ -10,7 +10,8 @@ import EmployeeCard from '../components/EmployeeCard'
 
 class EmployeesContainer extends React.Component {
     state = {
-        employeeId: false
+        employeeId: false,
+        upvote: 0
     }
 
     handleEdit = employee => {
@@ -28,6 +29,12 @@ class EmployeesContainer extends React.Component {
         this.props.fetchTitles()
     }
 
+    addUpvote = () => {
+        this.setState({
+            upvote: this.state.upvote + 1
+        })
+    }
+
     render() {
         // debugger 
         return(
@@ -36,7 +43,7 @@ class EmployeesContainer extends React.Component {
                 <br/><br/>
                 <div class="row">
                     {this.props.employees.map((employee) => 
-                        <EmployeeCard key={employee.id} employee={employee} handleEdit={this.handleEdit} delete={this.props.deleteEmployee} />)}
+                        <EmployeeCard upvote={this.state.upvote} addUpvote={this.addUpvote} key={employee.id} employee={employee} handleEdit={this.handleEdit} delete={this.props.deleteEmployee} />)}
                 </div>
             </div>
         )

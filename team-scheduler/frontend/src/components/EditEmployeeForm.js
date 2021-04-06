@@ -23,7 +23,7 @@ class EditEmployeeForm extends Component {
     }
 
     findEmployee = () => {
-        const { employees, employeeId} = this.props 
+        const { employees, employeeId } = this.props 
         const employee = employees.find(employee => employee.id === employeeId)
         this.setState({
             id: employee.id,
