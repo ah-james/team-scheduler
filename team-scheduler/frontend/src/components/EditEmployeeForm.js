@@ -8,6 +8,7 @@ class EditEmployeeForm extends Component {
         name: '',
         image: '',
         years: 0,
+        awards: 0,
         title_id: '',
     }
 
@@ -30,6 +31,7 @@ class EditEmployeeForm extends Component {
             name: employee.attributes.name,
             image: employee.attributes.image,
             years: employee.attributes.years,
+            awards: employee.attributes.awards,
             title_id: employee.attributes.title_id
         })
     }
@@ -54,6 +56,9 @@ class EditEmployeeForm extends Component {
                     <br /><br />
                     <label>Years: </label>
                     <input type='number' value={this.state.years} onChange={this.handleChange} name="years" />
+                    <br /><br />
+                    <label>Employee Awards: </label>
+                    <input type='number' value={parseInt(this.state.awards)} onChange={this.handleChange} name="awards"/>
                     <br /><br />
                     <label>Title: </label>
                     <select type='dropdown' onChange={this.handleChange} name="title">

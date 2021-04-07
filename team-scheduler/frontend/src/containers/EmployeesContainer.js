@@ -11,7 +11,6 @@ import EmployeeCard from '../components/EmployeeCard'
 class EmployeesContainer extends React.Component {
     state = {
         employeeId: false,
-        upvote: 0
     }
 
     handleEdit = employee => {
@@ -29,9 +28,9 @@ class EmployeesContainer extends React.Component {
         this.props.fetchTitles()
     }
 
-    addUpvote = () => {
+    addAward = () => {
         this.setState({
-            upvote: this.state.upvote + 1
+            // awards: this.state.awards + 1
         })
     }
 
@@ -43,7 +42,7 @@ class EmployeesContainer extends React.Component {
                 <br/><br/>
                 <div class="row">
                     {this.props.employees.map((employee) => 
-                        <EmployeeCard upvote={this.state.upvote} addUpvote={this.addUpvote} key={employee.id} employee={employee} handleEdit={this.handleEdit} delete={this.props.deleteEmployee} />)}
+                        <EmployeeCard addAward={this.addAward} key={employee.id} employee={employee} handleEdit={this.handleEdit} delete={this.props.deleteEmployee} />)}
                 </div>
             </div>
         )
