@@ -28,12 +28,6 @@ class EmployeesContainer extends React.Component {
         this.props.fetchTitles()
     }
 
-    addAward = () => {
-        this.setState({
-            // awards: this.state.awards + 1
-        })
-    }
-
     render() {
         // debugger 
         return(
@@ -42,7 +36,7 @@ class EmployeesContainer extends React.Component {
                 <br/><br/>
                 <div class="row">
                     {this.props.employees.map((employee) => 
-                        <EmployeeCard addAward={this.addAward} key={employee.id} employee={employee} handleEdit={this.handleEdit} delete={this.props.deleteEmployee} />)}
+                        <EmployeeCard key={employee.id} employee={employee} handleEdit={this.handleEdit} delete={this.props.deleteEmployee} />)}
                 </div>
             </div>
         )
