@@ -7,9 +7,9 @@ const employeeReducer = (state = [], action) => {
         case 'DELETE_EMPLOYEE':
             return [...state.filter(employee => employee.id !== action.payload.id)]
         case 'EDIT_EMPLOYEE':
-            // const index = state.employees.findIndex(employee => action.payload.id === employee.id)
-            // return [...state.slice(0, index), action.payload, ...state.slice(index + 1)]
-            return [...state.filter(employee => employee.id !== action.payload.id), action.payload]
+            const index = state.findIndex(employee => action.payload.id === employee.id)
+            return [...state.slice(0, index), action.payload, ...state.slice(index + 1)]
+            // return [...state.filter(employee => employee.id !== action.payload.id), action.payload]
         default:
             return state
     }
