@@ -14,7 +14,6 @@ class EmployeeCard extends React.Component {
 
     addAward = (employee) => {
         this.props.increaseAward(employee)
-        debugger
     }
 
     render() { 
