@@ -61,7 +61,7 @@ class EditEmployeeForm extends Component {
                     <input type='number' value={parseInt(this.state.awards)} onChange={this.handleChange} name="awards"/>
                     <br /><br />
                     <label>Title: </label>
-                    <select type='dropdown' onChange={this.handleChange} name="title">
+                    <select type='dropdown' onChange={this.handleChange} name="title_id">
                         <option value='0'>        </option>
                         {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
                     </select>
