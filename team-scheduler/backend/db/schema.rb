@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_150645) do
+ActiveRecord::Schema.define(version: 2021_04_10_000455) do
 
   create_table "employees", force: :cascade do |t|
-    t.string "name"
-    t.string "image"
     t.integer "years"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "title_id"
     t.integer "awards"
+    t.string "name", default: "Unknown Employee"
+    t.string "image", default: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
   end
 
   create_table "titles", force: :cascade do |t|
