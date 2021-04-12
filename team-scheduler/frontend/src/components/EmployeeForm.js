@@ -23,13 +23,13 @@ class EmployeeForm extends React.Component {
 
         if (!this.state.image) {
             formIsValid = false
-            errors['name'] = '*Please enter an image'
+            errors['image'] = '*Please enter an image'
         }
 
         if (this.state.name) {
-            if (!this.state.name.match(/^\w+$/)) {
+            if (!this.state.name.match(/[a-zA-Z]/)) {
                 formIsValid = false
-                errors['name'] = '*Please use alphabetic characters only'
+                errors['name'] = '*Please only use letters'
             }
         }
 
