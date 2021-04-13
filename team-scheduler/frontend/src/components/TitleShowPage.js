@@ -5,13 +5,15 @@ import EmployeeCard from './EmployeeCard'
 class TitleShowPage extends React.Component {
 
     render() {
-        let titleDetails = this.props.titles.filter( t => t.id == this.props.match.params.id);
+        let titleDetails = this.props.titles.filter( t => t.id === this.props.match.params.id)[0];
         return(
             <div>
                 <p>Router Show Page</p>
-                <h2>{titleDetails[0].attributes.title_name}</h2>
-                <h2>{titleDetails[0].attributes.description}</h2>
-                {/* <EmployeeCard /> */}
+                <h2>{titleDetails.attributes.title_name} Employees</h2>
+                <h3>{titleDetails.attributes.description}</h3>
+                {this.props.employees.filter(employee => employee.attributes.title_id === parseInt(this.props.match.params.id)).map(filteredEmployee => (
+                <EmployeeCard employee={filteredEmployee} />
+            ))}
             </div>
         )
     }
@@ -19,7 +21,8 @@ class TitleShowPage extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        titles: state.titles
+        titles: state.titles,
+        employees: state.employees
     }
 }
 
