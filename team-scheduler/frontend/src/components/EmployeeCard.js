@@ -3,14 +3,6 @@ import { connect } from 'react-redux'
 import { increaseAward } from '../actions/employeesActions'
 
 class EmployeeCard extends React.Component {
-    state = {
-        id: this.props.employee.id,
-        name: this.props.employee.attributes.name,
-        image: this.props.employee.attributes.image,
-        years: this.props.employee.attributes.years,
-        awards: this.props.employee.attributes.awards,
-        title_id: this.props.employee.attributes.title_id,
-    }
 
     addAward = (employee) => {
         this.props.increaseAward(employee)
