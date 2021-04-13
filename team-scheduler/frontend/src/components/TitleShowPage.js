@@ -8,7 +8,6 @@ class TitleShowPage extends React.Component {
         let titleDetails = this.props.titles.filter( t => t.id === this.props.match.params.id)[0];
         return(
             <div>
-                <p>Router Show Page</p>
                 <h2>{titleDetails.attributes.title_name} Employees</h2>
                 <h3>{titleDetails.attributes.description}</h3>
                 {this.props.employees.filter(employee => employee.attributes.title_id === parseInt(this.props.match.params.id)).map(filteredEmployee => (
