@@ -8,7 +8,7 @@ const WeekdayCard = (props) => {
             {props.titles.map(title => 
                 <div id={`${props.weekday}-${title.attributes.title_name}-dropdown`}>
                     <label>{title.attributes.title_name}<br/></label>
-                    <EmployeeSelect weekday={props.weekday} employees={props.employees}/>
+                    <EmployeeSelect weekday={props.weekday} employees={props.employees} titleId={title.id}/>
                 </div>
             )}
         </div>
