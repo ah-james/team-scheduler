@@ -66,11 +66,11 @@ class EmployeeForm extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>Name: </label>
                     <input type='text' value={this.state.name} onChange={this.handleChange} name="name"/>
-                    <div className='error'>{this.state.errors.name}</div>
+                    <div class='text-danger'>{this.state.errors.name}</div>
                     <br /><br />
                     <label>Image: </label>
                     <input type='text' value={this.state.image} onChange={this.handleChange} name="image"/>
-                    <div className='error'>{this.state.errors.image}</div>
+                    <div class='text-danger'>{this.state.errors.image}</div>
                     <br /><br />
                     <label>Years: </label>
                     <input type='number' value={parseInt(this.state.years)} onChange={this.handleChange} name="years"/>

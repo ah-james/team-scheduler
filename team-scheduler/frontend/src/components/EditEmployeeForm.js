@@ -10,6 +10,32 @@ class EditEmployeeForm extends Component {
         years: 0,
         awards: 0,
         title_id: '',
+        errors: {}
+    }
+
+    validateForm = () => {
+        let errors = {}
+        let formIsValid = true
+
+        if (!this.state.name) {
+            formIsValid = false
+            errors['name'] = '*Please enter a name'
+        }
+
+        if (!this.state.image) {
+            formIsValid = false
+            errors['image'] = '*Please enter an image'
+        }
+
+        if (this.state.name) {
+            if (!this.state.name.match(/[a-zA-Z]/)) {
+                formIsValid = false
+                errors['name'] = '*Please only use letters'
+            }
+        }
+
+        this.setState({ errors })
+        return formIsValid
     }
 
     componentDidMount() {
@@ -50,9 +76,11 @@ class EditEmployeeForm extends Component {
                 <form onSubmit={this.update}><br />
                     <label>Name: </label>
                     <input type='text' value={this.state.name} onChange={this.handleChange} name="name" />
+                    <div class='text-danger'>{this.state.errors.name}</div>
                     <br /><br />
                     <label>Image: </label>
                     <input type='text' value={this.state.image} onChange={this.handleChange} name="image" />
+                    <div class='text-danger'>{this.state.errors.name}</div>
                     <br /><br />
                     <label>Years: </label>
                     <input type='number' value={this.state.years} onChange={this.handleChange} name="years" />
