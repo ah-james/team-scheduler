@@ -10,7 +10,7 @@ class EmployeeCard extends React.Component {
 
     render() { 
         return(
-            <div class="col-md-3">
+            <div class="col-md-3 border border-dark m-4 p-4">
                 <h2>{this.props.employee.attributes.name}</h2>
                 <img src={this.props.employee.attributes.image} alt="employee" />
                 <p>Experience: {this.props.employee.attributes.years} Years</p>
