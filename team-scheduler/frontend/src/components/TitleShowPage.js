@@ -10,9 +10,12 @@ class TitleShowPage extends React.Component {
             <div>
                 <h2>{titleDetails.attributes.title_name} Employees</h2>
                 <h3>{titleDetails.attributes.description}</h3>
-                {this.props.employees.filter(employee => employee.attributes.title_id === parseInt(this.props.match.params.id)).map(filteredEmployee => (
-                <EmployeeCard employee={filteredEmployee} />
-            ))}
+                <div class="row">
+                    {this.props.employees.filter(employee => employee.attributes.title_id === parseInt(this.props.match.params.id)).map(filteredEmployee => (
+                    <EmployeeCard employee={filteredEmployee} />
+                    ))}
+                </div>
+
             </div>
         )
     }

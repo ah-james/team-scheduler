@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const TitleCard = (props) => {
     return(
-        <div>
+        <div class="col-sm">
             <Link key={props.title.id} to={`/titles/${props.title.id}`}>{props.title.attributes.title_name}</Link> 
             <br />
             <button name="delete" onClick={() => props.delete(props.title.id)}>Delete</button>

@@ -18,7 +18,9 @@ class TitlesContainer extends React.Component {
             <div>
                 <TitleForm />
                 <br />
-                {this.props.titles.map(title => <TitleCard title={title} employees={this.props.employees} delete={this.props.deleteTitle} />)}
+                <div class="row">
+                    {this.props.titles.map(title => <TitleCard title={title} employees={this.props.employees} delete={this.props.deleteTitle} />)}
+                </div>
             </div>
         )
     }
