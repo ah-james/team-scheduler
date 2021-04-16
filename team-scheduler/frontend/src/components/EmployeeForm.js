@@ -84,7 +84,7 @@ class EmployeeForm extends React.Component {
                         {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
                     </select>
                     <br /><br />
-                    <input type="submit" />
+                    <input class="btn btn-outline-dark" type="submit" />
                 </form>
             </div>
         )
