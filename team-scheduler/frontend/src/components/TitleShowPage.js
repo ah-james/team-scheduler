@@ -15,7 +15,6 @@ class TitleShowPage extends React.Component {
                     <EmployeeCard employee={filteredEmployee} />
                     ))}
                 </div>
-
             </div>
         )
     }

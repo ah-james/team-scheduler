@@ -15,9 +15,11 @@ class EmployeeCard extends React.Component {
                 <img src={this.props.employee.attributes.image} alt="employee" />
                 <p>Experience: {this.props.employee.attributes.years} Years</p>
                 <p>Employee of the Month: {this.props.employee.attributes.awards}</p>
-                <button name="delete" onClick={() => this.props.delete(this.props.employee.id)}>Fire</button>
-                <button name="edit" onClick={() => this.props.handleEdit(this.props.employee)}>Edit</button>
-                <button name='award' onClick={() => this.addAward(this.props.employee)}>Award</button>
+                <div class="btn-group">
+                    <button class="btn btn-outline-dark" name="delete" onClick={() => this.props.delete(this.props.employee.id)}>Fire</button>
+                    <button class="btn btn-outline-dark" onClick={() => this.props.handleEdit(this.props.employee)}>Edit</button>
+                    <button class="btn btn-outline-dark" name='award' onClick={() => this.addAward(this.props.employee)}>Award</button>
+                </div>
             </div>
         )
     }
