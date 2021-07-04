@@ -63,27 +63,27 @@ class EmployeeForm extends React.Component {
             <div>
                 <br />
                 <h2>Create a New Employee</h2><br />
-                <form class="form-inline" onSubmit={this.handleSubmit}>
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label">Name</label>
-                        <input class="form-control" type='text' value={this.state.name} onChange={this.handleChange} name="name"/>
+                <form onSubmit={this.handleSubmit}>
+                    <div>
+                        <label>Name</label>
+                        <input type='text' value={this.state.name} onChange={this.handleChange} name="name"/>
                         <div class='text-danger'>{this.state.errors.name}</div>
                     </div>
                     <br /><br />
-                    <div class="col-md-4 mb-3">
-                        <label class="form-label">Image</label>
-                        <input class="form-control" type='text' value={this.state.image} onChange={this.handleChange} name="image"/>
+                    <div>
+                        <label>Image</label>
+                        <input type='text' value={this.state.image} onChange={this.handleChange} name="image"/>
                         <div class='text-danger'>{this.state.errors.image}</div>
                     </div>
                     <br /><br />
-                    <div class="form-group col-md-4 mb-3">
-                        <label class="form-label">Years</label>
-                        <input class="form-control" type='number' value={parseInt(this.state.years)} onChange={this.handleChange} name="years"/>
+                    <div>
+                        <label>Years</label>
+                        <input type='number' value={parseInt(this.state.years)} onChange={this.handleChange} name="years"/>
                     </div>
                     <br /><br />
-                    <div class="form-group">
-                        <label class="form-label">Employee Awards</label>
-                        <input class="form-control" type='number' value={parseInt(this.state.awards)} onChange={this.handleChange} name="awards"/>
+                    <div>
+                        <label>Employee Awards</label>
+                        <input type='number' value={parseInt(this.state.awards)} onChange={this.handleChange} name="awards"/>
                     </div>
                     <br /><br />
                     <div class="form-group">
