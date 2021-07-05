@@ -1,29 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchTitles } from '../actions/titlesActions'
 import { fetchEmployees } from '../actions/employeesActions'
 import WeekdayCard from '../components/WeekdayCard'
 
-class HomeContainer extends React.Component {
+const HomeContainer = props => {
 
-    componentDidMount() {
-        this.props.fetchEmployees()
-        this.props.fetchTitles()
-    }
+    useEffect(() => {
+        props.fetchEmployees()
+        props.fetchTitles()
+    }, [fetchEmployees, fetchTitles])
 
-    render(){
-        return(
-            <div class="row">
-                <WeekdayCard weekday={'Monday'} titles={this.props.titles} employees={this.props.employees} />
-                <WeekdayCard weekday={'Tuesday'} titles={this.props.titles} employees={this.props.employees} />
-                <WeekdayCard weekday={'Wednesday'} titles={this.props.titles} employees={this.props.employees} />
-                <WeekdayCard weekday={'Thursday'} titles={this.props.titles} employees={this.props.employees} />
-                <WeekdayCard weekday={'Friday'} titles={this.props.titles} employees={this.props.employees} />
-                <WeekdayCard weekday={'Saturday'} titles={this.props.titles} employees={this.props.employees} />
-                <WeekdayCard weekday={'Sunday'} titles={this.props.titles} employees={this.props.employees} />
-            </div>
-        )
-    }
+    return(
+        <div class="row">
+            <WeekdayCard weekday={'Monday'} titles={props.titles} employees={props.employees} />
+            <WeekdayCard weekday={'Tuesday'} titles={props.titles} employees={props.employees} />
+            <WeekdayCard weekday={'Wednesday'} titles={props.titles} employees={props.employees} />
+            <WeekdayCard weekday={'Thursday'} titles={props.titles} employees={props.employees} />
+            <WeekdayCard weekday={'Friday'} titles={props.titles} employees={props.employees} />
+            <WeekdayCard weekday={'Saturday'} titles={props.titles} employees={props.employees} />
+            <WeekdayCard weekday={'Sunday'} titles={props.titles} employees={props.employees} />
+        </div>
+    )
 }
 
 const mapStateToProps = state => {
