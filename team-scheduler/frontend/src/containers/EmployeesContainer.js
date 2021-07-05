@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import { connect } from 'react-redux'
 import { fetchEmployees } from '../actions/employeesActions'
 import { fetchTitles } from '../actions/titlesActions'
@@ -8,39 +8,34 @@ import EmployeeForm from '../components/EmployeeForm'
 import EditEmployeeForm from '../components/EditEmployeeForm'
 import EmployeeCard from '../components/EmployeeCard'
 
-class EmployeesContainer extends React.Component {
-    state = {
-        employeeId: false,
+const EmployeesContainer = props => {
+    const [employeeId, setEmployeeId] = useState(false)
+
+    useEffect(() => {
+        props.fetchEmployees()
+        props.fetchTitles()
+    }, [fetchEmployees, fetchTitles])
+
+    const handleEdit = employee => {
+        setEmployeeId(employee.id)
     }
 
-    handleEdit = employee => {
-        this.setState({
-            employeeId: employee.id
-        })
+    const resetEmployeeId = () => {
+        setEmployeeId(false)
     }
 
-    resetEmployeeId = () => {
-        this.setState({ employeeId: false})
-    }
 
-    componentDidMount() {
-        this.props.fetchEmployees()
-        this.props.fetchTitles()
-    }
 
-    render() {
-        // debugger 
-        return(
-            <div>
-                {this.state.employeeId ? <EditEmployeeForm resetEmployeeId={this.resetEmployeeId} employeeId={this.state.employeeId} /> : <EmployeeForm />}
-                <br/><br/>
-                <div class="row">
-                    {this.props.employees.map((employee) => 
-                        <EmployeeCard key={employee.id} employee={employee} handleEdit={this.handleEdit} delete={this.props.deleteEmployee} />)}
-                </div>
+    return(
+        <div>
+            {employeeId ? <EditEmployeeForm resetEmployeeId={resetEmployeeId} employeeId={employeeId} /> : <EmployeeForm />}
+            <br/><br/>
+            <div class="row">
+                {props.employees.map((employee) => 
+                    <EmployeeCard key={employee.id} employee={employee} handleEdit={handleEdit} delete={props.deleteEmployee} />)}
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 const mapStateToProps = state => {
