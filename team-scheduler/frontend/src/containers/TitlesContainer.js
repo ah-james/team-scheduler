@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import TitleCard from '../components/TitleCard'
 import TitleForm from '../components/TitleForm'
@@ -6,24 +6,22 @@ import { fetchTitles } from '../actions/titlesActions'
 import { fetchEmployees } from '../actions/employeesActions'
 import { deleteTitle } from '../actions/titlesActions'
 
-class TitlesContainer extends React.Component {
+const TitlesContainer = props => {
 
-    componentDidMount() {
-        this.props.fetchTitles()
-        this.props.fetchEmployees()
-    }
+    useEffect(() => {
+        props.fetchTitles()
+        props.fetchEmployees()
+    }, [fetchTitles, fetchEmployees])
     
-    render() {
-        return(
-            <div>
-                <TitleForm />
-                <br />
-                <div class="row">
-                    {this.props.titles.map(title => <TitleCard title={title} employees={this.props.employees} delete={this.props.deleteTitle} />)}
-                </div>
+    return(
+        <div>
+            <TitleForm />
+            <br />
+            <div class="row">
+                {props.titles.map(title => <TitleCard title={title} employees={props.employees} delete={props.deleteTitle} />)}
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 const mapStateToProps = state => {
