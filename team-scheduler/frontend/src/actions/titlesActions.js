@@ -1,8 +1,25 @@
+// export const fetchTitles = () => {
+//     return (dispatch) => {
+//         fetch('http://localhost:3000/titles')
+//         .then(resp => resp.json())
+//         .then(json => dispatch({type: "GET_TITLES", payload: json['data']}))
+//     }
+// }
+
 export const fetchTitles = () => {
-    return (dispatch) => {
-        fetch('http://localhost:3000/titles')
-        .then(resp => resp.json())
-        .then(json => dispatch({type: "GET_TITLES", payload: json['data']}))
+    return async dispatch => {
+        try {
+            let response = await fetch('http://localhost:3000/titles')
+            
+            if (!response.ok) {
+                throw new Error('Something went wrong!')
+            }
+
+            let json = await response.json()
+            dispatch({type: "GET_TITLES", payload: json['data']})
+        } catch (error) {
+            throw error
+        }
     }
 }
 
