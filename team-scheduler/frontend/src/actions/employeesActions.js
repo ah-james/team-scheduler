@@ -1,8 +1,26 @@
+// export const fetchEmployees = () => {
+//     return (dispatch) => {
+//         fetch('http://localhost:3000/employees')
+//         .then(resp => resp.json())
+//         .then(json => dispatch({type: "GET_EMPLOYEES", payload: json['data']}))
+//     }
+// }
+
 export const fetchEmployees = () => {
-    return (dispatch) => {
-        fetch('http://localhost:3000/employees')
-        .then(resp => resp.json())
-        .then(json => dispatch({type: "GET_EMPLOYEES", payload: json['data']}))
+    return async dispatch => {
+        try {
+            let response = await fetch('http://localhost:3000/employees')
+
+            if (!response.ok) {
+                throw new Error('Something Went Wrong!')
+            }
+
+            let json = await response.json()
+            dispatch({type: "GET_EMPLOYEES", payload: json['data']})
+
+        } catch (error) {
+            throw error
+        }
     }
 }
 
