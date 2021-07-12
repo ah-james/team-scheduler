@@ -7,7 +7,8 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 const EmployeeCard = props => {
 
   const addAward = (employee) => {
-      this.props.increaseAward(employee)
+      // this.props.increaseAward(employee)
+      props.increaseAward(employee)
   }
 
   const handleDelete = () => {

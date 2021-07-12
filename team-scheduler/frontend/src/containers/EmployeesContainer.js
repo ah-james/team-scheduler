@@ -24,8 +24,6 @@ const EmployeesContainer = props => {
         setEmployeeId(false)
     }
 
-
-
     return(
         <div>
             {employeeId ? <EditEmployeeForm resetEmployeeId={resetEmployeeId} employeeId={employeeId} /> : <EmployeeForm />}

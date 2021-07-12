@@ -128,14 +128,35 @@ export const editEmployee = employee => {
     }
 }
 
+// export const increaseAward = employee => {
+//     return (dispatch) => {
+//         fetch(`http://localhost:3000/employees/${employee.id}`, {
+//         method: 'PATCH',
+//         body: JSON.stringify({awards: employee.attributes.awards + 1}),
+//         headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
+//         })
+//         .then(resp => resp.json())
+//         .then(json => dispatch({type: 'EDIT_EMPLOYEE', payload: json['data']}))
+//     }
+// }
+
 export const increaseAward = employee => {
-    return (dispatch) => {
-        fetch(`http://localhost:3000/employees/${employee.id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({awards: employee.attributes.awards + 1}),
-        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
-        })
-        .then(resp => resp.json())
-        .then(json => dispatch({type: 'EDIT_EMPLOYEE', payload: json['data']}))
+    return async dispatch => {
+        try {
+            let response = await fetch(`http://localhost:3000/employees/${employee.id}`, {
+                method: 'PATCH',
+                body: JSON.stringify({awards: employee.attributes.awards + 1}),
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
+            })
+
+            if (!response.ok) {
+                throw new Error('Something Went Wrong!')
+            }
+
+            let json = await response.json()
+            dispatch({type: 'EDIT_EMPLOYEE', payload: json['data']})
+        } catch (error) {
+            throw error
+        }
     }
 }
