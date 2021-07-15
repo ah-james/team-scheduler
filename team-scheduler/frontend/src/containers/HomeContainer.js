@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+
 import { fetchTitles } from '../actions/titlesActions'
 import { fetchEmployees } from '../actions/employeesActions'
 import WeekdayCard from '../components/WeekdayCard'

@@ -1,6 +1,8 @@
 import React from 'react'
-import { addEmployee } from '../actions/employeesActions'
 import { connect } from 'react-redux'
+
+import { addEmployee } from '../actions/employeesActions'
+
 
 class EmployeeForm extends React.Component {
     state = {

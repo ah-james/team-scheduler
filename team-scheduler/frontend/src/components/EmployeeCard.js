@@ -1,8 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { increaseAward } from '../actions/employeesActions'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
+
+import { increaseAward } from '../actions/employeesActions'
+
 
 const EmployeeCard = props => {
 

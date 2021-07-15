@@ -1,9 +1,10 @@
 import React, { useEffect, useState} from 'react'
 import { connect } from 'react-redux'
+
 import { fetchEmployees } from '../actions/employeesActions'
 import { fetchTitles } from '../actions/titlesActions'
 import { deleteEmployee } from '../actions/employeesActions'
-import { editEmployee} from '../actions/employeesActions'
+import { editEmployee } from '../actions/employeesActions'
 import EmployeeForm from '../components/EmployeeForm'
 import EditEmployeeForm from '../components/EditEmployeeForm'
 import EmployeeCard from '../components/EmployeeCard'

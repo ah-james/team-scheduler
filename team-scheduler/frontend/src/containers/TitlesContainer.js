@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+
 import TitleCard from '../components/TitleCard'
 import TitleForm from '../components/TitleForm'
 import { fetchTitles } from '../actions/titlesActions'

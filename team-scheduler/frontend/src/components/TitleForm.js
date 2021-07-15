@@ -1,6 +1,7 @@
 import React from 'react'
-import { createTitle } from '../actions/titlesActions'
 import { connect } from 'react-redux'
+
+import { createTitle } from '../actions/titlesActions'
 
 class TitleForm extends React.Component {
     state = {

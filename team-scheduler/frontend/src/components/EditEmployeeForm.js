@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import { editEmployee } from '../actions/employeesActions'
 
 class EditEmployeeForm extends Component {
