@@ -10,7 +10,7 @@ const HomeContainer = props => {
     useEffect(() => {
         props.fetchEmployees()
         props.fetchTitles()
-    }, [fetchEmployees, fetchTitles])
+    }, [props])
 
     return(
         <div class="row">

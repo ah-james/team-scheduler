@@ -12,7 +12,7 @@ const TitlesContainer = props => {
     useEffect(() => {
         props.fetchTitles()
         props.fetchEmployees()
-    }, [fetchTitles, fetchEmployees])
+    }, [props])
     
     return(
         <div>

@@ -1,10 +1,8 @@
-import React, { useEffect, useState} from 'react'
-import { connect } from 'react-redux'
+import React, { useEffect, useState, useCallback } from 'react'
+import { connect, useSelector, useDispatch } from 'react-redux'
 
-import { fetchEmployees } from '../actions/employeesActions'
-import { fetchTitles } from '../actions/titlesActions'
-import { deleteEmployee } from '../actions/employeesActions'
-import { editEmployee } from '../actions/employeesActions'
+import * as employeeActions from '../actions/employeesActions'
+import * as titlesActions from '../actions/titlesActions'
 import EmployeeForm from '../components/EmployeeForm'
 import EditEmployeeForm from '../components/EditEmployeeForm'
 import EmployeeCard from '../components/EmployeeCard'
@@ -12,10 +10,23 @@ import EmployeeCard from '../components/EmployeeCard'
 const EmployeesContainer = props => {
     const [employeeId, setEmployeeId] = useState(false)
 
+    // use redux's useSelector hook instead of mapStateToProps
+    const employees = useSelector(state => state.employees)
+    // save useDispatch hook to a variable for ease of use
+    const dispatch = useDispatch()
+
+    const loadPage = useCallback(async () => {
+        try {
+            await dispatch(employeeActions.fetchEmployees())
+            await dispatch(titlesActions.fetchTitles())
+        } catch (error) {
+            console.log(error.message)
+        }
+    }, [dispatch])
+
     useEffect(() => {
-        props.fetchEmployees()
-        props.fetchTitles()
-    }, [fetchEmployees, fetchTitles])
+        loadPage()
+    }, [loadPage])
 
     const handleEdit = employee => {
         setEmployeeId(employee.id)
@@ -25,32 +36,24 @@ const EmployeesContainer = props => {
         setEmployeeId(false)
     }
 
+
     return(
         <div>
             {employeeId ? <EditEmployeeForm resetEmployeeId={resetEmployeeId} employeeId={employeeId} /> : <EmployeeForm />}
             <br/><br/>
             <div class="row">
-                {props.employees.map((employee) => 
+                {employees.map((employee) => 
                     <EmployeeCard key={employee.id} employee={employee} handleEdit={handleEdit} delete={props.deleteEmployee} />)}
             </div>
         </div>
     )
 }
 
-const mapStateToProps = state => {
-    return { 
-        employees: state.employees,
-        titles: state.titles
-    }
-}
-
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchEmployees: () => dispatch(fetchEmployees()),
-        fetchTitles: () => dispatch(fetchTitles()),
-        deleteEmployee: employee => dispatch(deleteEmployee(employee)),
-        editEmployee: employee => dispatch(editEmployee(employee))
+        deleteEmployee: employee => dispatch(employeeActions.deleteEmployee(employee)),
+        // editEmployee: employee => dispatch(editEmployee(employee))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EmployeesContainer)
+export default connect(null, mapDispatchToProps)(EmployeesContainer)

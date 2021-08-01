@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import EmployeeCard from './EmployeeCard'
 
 const TitleShowPage = props => {
-    let titleDetails = props.titles.filter(title => title.id == props.match.params.id)[0]
+    let titleDetails = props.titles.filter(title => title.id === props.match.params.id)[0]
 
     return(
         <div>
