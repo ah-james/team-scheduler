@@ -47,7 +47,7 @@ const EmployeeCard = props => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        increaseAward: employee => dispatch(increaseAward(employee))
+      increaseAward: employee => dispatch(increaseAward(employee))
     }
 }
 
