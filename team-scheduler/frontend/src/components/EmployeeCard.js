@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
@@ -7,10 +7,10 @@ import { increaseAward } from '../actions/employeesActions'
 
 
 const EmployeeCard = props => {
+  const dispatch = useDispatch()
 
-  const addAward = (employee) => {
-      // this.props.increaseAward(employee)
-      props.increaseAward(employee)
+  const addAward = async (employee) => {
+    await dispatch(increaseAward(employee))
   }
 
   const handleDelete = () => {
@@ -45,10 +45,4 @@ const EmployeeCard = props => {
   )
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-      increaseAward: employee => dispatch(increaseAward(employee))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(EmployeeCard)
+export default EmployeeCard
