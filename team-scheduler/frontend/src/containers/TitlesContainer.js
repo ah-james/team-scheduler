@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React, { useCallback, useEffect } from 'react'
+import { connect, useSelector, useDispatch } from 'react-redux'
 
 import TitleCard from '../components/TitleCard'
 import TitleForm from '../components/TitleForm'
@@ -9,35 +9,38 @@ import { deleteTitle } from '../actions/titlesActions'
 
 const TitlesContainer = props => {
 
+    const employees = useSelector(state => state.employees)
+    const titles = useSelector(state => state.titles)
+    const dispatch = useDispatch()
+
+    const loadPage = useCallback(async () => {
+        try {
+            await dispatch(fetchTitles())
+            await dispatch(fetchEmployees())
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
     useEffect(() => {
-        props.fetchTitles()
-        props.fetchEmployees()
-    }, [props])
+        loadPage()
+    }, [loadPage])
     
     return(
         <div>
             <TitleForm />
             <br />
             <div class="row">
-                {props.titles.map(title => <TitleCard title={title} employees={props.employees} delete={props.deleteTitle} />)}
+                {titles.map(title => <TitleCard title={title} employees={employees} delete={props.deleteTitle} />)}
             </div>
         </div>
     )
 }
 
-const mapStateToProps = state => {
-    return { 
-        employees: state.employees,
-        titles: state.titles
-    }
-}
-
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchTitles: () => dispatch(fetchTitles()),
-        fetchEmployees: () => dispatch(fetchEmployees()),
         deleteTitle: title => dispatch(deleteTitle(title))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TitlesContainer)
+export default connect(null, mapDispatchToProps)(TitlesContainer)
