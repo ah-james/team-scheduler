@@ -36,6 +36,9 @@ const EmployeesContainer = props => {
         setEmployeeId(false)
     }
 
+    const handleDelete = async employee => {
+        await dispatch(employeeActions.deleteEmployee(employee))
+    }
 
     return(
         <div>
@@ -43,17 +46,10 @@ const EmployeesContainer = props => {
             <br/><br/>
             <div class="row">
                 {employees.map((employee) => 
-                    <EmployeeCard key={employee.id} employee={employee} handleEdit={handleEdit} delete={props.deleteEmployee} />)}
+                    <EmployeeCard key={employee.id} employee={employee} handleEdit={handleEdit} delete={() => handleDelete(employee.id)} />)}
             </div>
         </div>
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        deleteEmployee: employee => dispatch(employeeActions.deleteEmployee(employee)),
-        // editEmployee: employee => dispatch(editEmployee(employee))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(EmployeesContainer)
+export default EmployeesContainer

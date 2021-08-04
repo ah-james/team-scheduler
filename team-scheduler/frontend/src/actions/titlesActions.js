@@ -71,10 +71,10 @@ export const createTitle = title => {
 //     }
 // }
 
-export const deleteTitle = employee => {
+export const deleteTitle = title => {
     return async dispatch => {
         try {
-            let response = await fetch(`http://localhost:3000/titles/${employee}`, {
+            let response = await fetch(`http://localhost:3000/titles/${title}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

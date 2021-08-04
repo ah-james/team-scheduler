@@ -20,27 +20,25 @@ const TitlesContainer = props => {
         } catch (error) {
             console.log(error)
         }
-    })
+    }, [dispatch])
 
     useEffect(() => {
         loadPage()
     }, [loadPage])
+
+    const handleDelete = async title => {
+        await dispatch(deleteTitle(title))
+    }
     
     return(
         <div>
             <TitleForm />
             <br />
             <div class="row">
-                {titles.map(title => <TitleCard title={title} employees={employees} delete={props.deleteTitle} />)}
+                {titles.map(title => <TitleCard title={title} employees={employees} delete={() => handleDelete(title.id)} />)}
             </div>
         </div>
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        deleteTitle: title => dispatch(deleteTitle(title))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(TitlesContainer)
+export default TitlesContainer
