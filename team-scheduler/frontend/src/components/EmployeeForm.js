@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
+import { connect, useSelector, useDispatch } from 'react-redux'
 
 import { addEmployee } from '../actions/employeesActions'
 
@@ -11,6 +11,9 @@ const EmployeeForm = props => {
     const [awards, setAwards] = useState(0)
     const [title_id, setTitleId] = useState('')
     const [errors, setErrors] = useState({})
+
+    const titles = useSelector(state => state.titles)
+    const dispatch = useDispatch()
 
     const validateForm = () => {
         let errors = {}
@@ -40,7 +43,7 @@ const EmployeeForm = props => {
     const handleSubmit = event => {
         event.preventDefault()
         if (validateForm()) {
-            props.addEmployee(name, image, years, awards, title_id)
+            dispatch(addEmployee(name, image, years, awards, title_id))
         }
         setName('')
         setImage('')
@@ -81,7 +84,7 @@ const EmployeeForm = props => {
                     <label class="form-label">Title</label>
                     <select class="custom-select custom-select-lg mb-3" type='dropdown' onChange={e => setTitleId(e.target.value)} name="title_id">
                         <option>        </option>
-                        {props.titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
+                        {titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
                     </select>
                 </div>
                 <br /><br />
@@ -91,10 +94,4 @@ const EmployeeForm = props => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        titles: state.titles
-    }
-}
-
-export default connect(mapStateToProps, { addEmployee })(EmployeeForm)
+export default EmployeeForm
