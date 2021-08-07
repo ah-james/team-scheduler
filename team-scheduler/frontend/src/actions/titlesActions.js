@@ -35,12 +35,12 @@ export const fetchTitles = () => {
 //     }
 // }
 
-export const createTitle = title => {
+export const createTitle = (title_name, description) => {
     return async dispatch => {
         try {
             let response = await fetch('http://localhost:3000/titles', {
                 method: 'POST',
-                body: JSON.stringify(title),
+                body: JSON.stringify({title_name, description}),
                 headers: {'Content-Type': 'application/json'}
             })
 

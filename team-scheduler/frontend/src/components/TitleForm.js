@@ -1,46 +1,35 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 import { createTitle } from '../actions/titlesActions'
 
-class TitleForm extends React.Component {
-    state = {
-        title_name: '',
-        description: ''
-    }
+const TitleForm = props => {
+    const [title_name, setTitleName] = useState('')
+    const [description, setDescription] = useState('')
 
-    handleChange = (event) => {
-        const { name, value } = event.target
-        this.setState({
-            [name]: value
-        })
-    }
+    const dispatch = useDispatch()
 
-    handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault()
-        this.props.createTitle(this.state)
-        this.setState({
-            title_name: '',
-            description: ''
-        })
+        dispatch(createTitle(title_name, description))
+        setTitleName('')
+        setDescription('')
     }  
 
-    render() {
-        return(
-            <div>
-                <h2>Create a New Title</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Title: </label>
-                    <input type='text' value={this.state.title_name} onChange={this.handleChange} name="title_name" />
-                    <br /><br />
-                    <label>Description: </label>
-                    <input type='text' value={this.state.description} onChange={this.handleChange} name="description" />
-                    <br /><br />
-                    <input type='submit' />
-                </form>
-            </div>
-        )
-    }
+    return(
+        <div>
+            <h2>Create a New Title</h2>
+            <form onSubmit={handleSubmit}>
+                <label>Title: </label>
+                <input type='text' value={title_name} onChange={e => setTitleName(e.target.value)} name="title_name" />
+                <br /><br />
+                <label>Description: </label>
+                <input type='text' value={description} onChange={e => setDescription(e.target.value)} name="description" />
+                <br /><br />
+                <input type='submit' />
+            </form>
+        </div>
+    )
 }
 
-export default connect(null, { createTitle })(TitleForm)
+export default TitleForm

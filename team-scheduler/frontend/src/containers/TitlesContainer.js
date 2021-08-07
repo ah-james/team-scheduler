@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { connect, useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import TitleCard from '../components/TitleCard'
 import TitleForm from '../components/TitleForm'

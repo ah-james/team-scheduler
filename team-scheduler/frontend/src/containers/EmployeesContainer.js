@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { connect, useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import * as employeeActions from '../actions/employeesActions'
 import * as titlesActions from '../actions/titlesActions'
