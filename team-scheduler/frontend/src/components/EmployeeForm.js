@@ -1,106 +1,94 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
 import { addEmployee } from '../actions/employeesActions'
 
 
-class EmployeeForm extends React.Component {
-    state = {
-        name: '',
-        image: '',
-        years: 0,
-        awards: 0,
-        title_id: '',
-        errors: {}
-    }
+const EmployeeForm = props => {
+    const [name, setName] = useState('')
+    const [image, setImage] = useState('')
+    const [years, setYears] = useState(0)
+    const [awards, setAwards] = useState(0)
+    const [title_id, setTitleId] = useState('')
+    const [errors, setErrors] = useState({})
 
-    validateForm = () => {
+    const validateForm = () => {
         let errors = {}
         let formIsValid = true
 
-        if (!this.state.name) {
+        if (!name) {
             formIsValid = false
             errors['name'] = '*Please enter a name'
         }
 
-        if (!this.state.image) {
+        if (!image) {
             formIsValid = false
             errors['image'] = '*Please enter an image'
         }
 
-        if (this.state.name) {
-            if (!this.state.name.match(/[a-zA-Z]/)) {
+        if (name) {
+            if (!name.match(/[a-zA-Z]/)) {
                 formIsValid = false
                 errors['name'] = '*Please only use letters'
             }
         }
 
-        this.setState({ errors })
+        setErrors({ errors })
         return formIsValid
     }
 
-    handleChange = (event) => {
-        const { name, value } = event.target
-        this.setState({
-            [name]: value
-        })
-    }
-
-    handleSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault()
-        if (this.validateForm()) {
-            this.props.addEmployee(this.state)
+        if (validateForm()) {
+            props.addEmployee(name, image, years, awards, title_id)
         }
-        this.setState({
-            name: '',
-            image: '',
-            years: 0,
-            awards: 0,
-            title_id: '',
-        })
+        setName('')
+        setImage('')
+        setYears(0)
+        setAwards(0)
+        setTitleId('')
+        setErrors({})
     }   
 
-    render() {
-        return(
-            <div>
-                <br />
-                <h2>Create a New Employee</h2><br />
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label>Name</label>
-                        <input type='text' value={this.state.name} onChange={this.handleChange} name="name"/>
-                        <div class='text-danger'>{this.state.errors.name}</div>
-                    </div>
-                    <br /><br />
-                    <div>
-                        <label>Image</label>
-                        <input type='text' value={this.state.image} onChange={this.handleChange} name="image"/>
-                        <div class='text-danger'>{this.state.errors.image}</div>
-                    </div>
-                    <br /><br />
-                    <div>
-                        <label>Years</label>
-                        <input type='number' value={parseInt(this.state.years)} onChange={this.handleChange} name="years"/>
-                    </div>
-                    <br /><br />
-                    <div>
-                        <label>Employee Awards</label>
-                        <input type='number' value={parseInt(this.state.awards)} onChange={this.handleChange} name="awards"/>
-                    </div>
-                    <br /><br />
-                    <div class="form-group">
-                        <label class="form-label">Title</label>
-                        <select class="custom-select custom-select-lg mb-3" type='dropdown' onChange={this.handleChange} name="title_id">
-                            <option>        </option>
-                            {this.props.titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
-                        </select>
-                    </div>
-                    <br /><br />
-                    <input class="btn btn-outline-dark" type="submit" />
-                </form>
-            </div>
-        )
-    }
+    return(
+        <div>
+            <br />
+            <h2>Create a New Employee</h2><br />
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>Name</label>
+                    <input type='text' value={name} onChange={e => setName(e.target.value)} name="name"/>
+                    <div class='text-danger'>{errors.name}</div>
+                </div>
+                <br /><br />
+                <div>
+                    <label>Image</label>
+                    <input type='text' value={image} onChange={e => setImage(e.target.value)} name="image"/>
+                    <div class='text-danger'>{errors.image}</div>
+                </div>
+                <br /><br />
+                <div>
+                    <label>Years</label>
+                    <input type='number' value={parseInt(years)} onChange={e => setYears(e.target.value)} name="years"/>
+                </div>
+                <br /><br />
+                <div>
+                    <label>Employee Awards</label>
+                    <input type='number' value={parseInt(awards)} onChange={e => setAwards(e.target.value)} name="awards"/>
+                </div>
+                <br /><br />
+                <div class="form-group">
+                    <label class="form-label">Title</label>
+                    <select class="custom-select custom-select-lg mb-3" type='dropdown' onChange={e => setTitleId(e.target.value)} name="title_id">
+                        <option>        </option>
+                        {props.titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
+                    </select>
+                </div>
+                <br /><br />
+                <input class="btn btn-outline-dark" type="submit" />
+            </form>
+        </div>
+    )
 }
 
 const mapStateToProps = state => {

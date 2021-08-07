@@ -36,12 +36,12 @@ export const fetchEmployees = () => {
 //     }
 // }
 
-export const addEmployee = employee => {
+export const addEmployee = (name, image, years, awards, title_id) => {
     return async dispatch => {
         try {
             let response = await fetch('http://localhost:3000/employees', {
                 method: 'POST',
-                body: JSON.stringify(employee),
+                body: JSON.stringify({name, image, years, awards, title_id}),
                 headers: {'Content-Type': 'application/json'}
             })
 
