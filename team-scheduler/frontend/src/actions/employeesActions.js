@@ -107,12 +107,12 @@ export const deleteEmployee = employee => {
 //     }
 // }
 
-export const editEmployee = employee => {
+export const editEmployee = (id, name, image, years, awards, title_id) => {
     return async dispatch => {
         try {
-            let response = await fetch(`http://localhost:3000/employees/${employee.id}`, {
+            let response = await fetch(`http://localhost:3000/employees/${id}`, {
                 method: 'PATCH',
-                body: JSON.stringify(employee),
+                body: JSON.stringify({id, name, image, years, awards, title_id}),
                 headers: {'Content-Type': 'application/json', 'Accept': 'application/json'}
             })
 

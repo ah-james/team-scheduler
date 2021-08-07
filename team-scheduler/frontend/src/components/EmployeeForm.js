@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { connect, useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { addEmployee } from '../actions/employeesActions'
 
