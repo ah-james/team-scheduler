@@ -42,23 +42,25 @@ const EditEmployeeForm = props => {
         return formIsValid
     }
 
-    // const findEmployee = () => {
-    //     const { employeeId } = props 
-    //     const employee = employees.find(employee => employee.id === employeeId)
-    //     setId(employee.id)
-    //     setName(employee.attributes.name)
-    //     setImage(employee.attributes.image)
-    //     setYears(employee.attributes.years)
-    //     setAwards(employee.attributes.awards)
-    //     setTitleId(employee.attributes.title_id)
-    // }
+    const findEmployee = () => {
+        const { employeeId } = props
+        // const employee = employees.find(employee => employee.id === employeeId)
+        setId(employeeId)
+        // setName(employee.attributes.name)
+        // setImage(employee.attributes.image)
+        // setYears(employee.attributes.years)
+        // setAwards(employee.attributes.awards)
+        // setTitleId(employee.attributes.title_id)
+    }
 
-    // useEffect(() => findEmployee(), [findEmployee])
+    useEffect(() => findEmployee(), [findEmployee])
 
     const update = event => {
         event.preventDefault()
         // console.log(id, name, image, years, awards, title_id)
-        dispatch(editEmployee(id, name, image, years, awards, title_id))
+        if (validateForm()) {
+            dispatch(editEmployee(id, name, image, years, awards, title_id))
+        }
         props.resetEmployeeId()
     }
 
