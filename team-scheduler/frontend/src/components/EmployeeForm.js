@@ -69,42 +69,40 @@ const EmployeeForm = props => {
     }   
 
     return(
-        <div>
-            <br />
-            <h2>Create a New Employee</h2><br />
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Name</label>
-                    <input type='text' value={name} onChange={e => setName(e.target.value)} name="name"/>
-                    <div class='text-danger'>{formErrors.name}</div>
+        <div class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h2>Create a New Employee</h2><br />
+                    <form onSubmit={handleSubmit}>
+                        <div class="mb-3">
+                            <label for='name'>Name: </label>
+                            <input id='name' type='text' value={name} onChange={e => setName(e.target.value)} name="name"/>
+                            <div class='text-danger'>{formErrors.name}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label>Image: </label>
+                            <input type='text' value={image} onChange={e => setImage(e.target.value)} name="image"/>
+                            <div class='text-danger'>{formErrors.image}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label>Years: </label>
+                            <input type='number' value={parseInt(years)} onChange={e => setYears(e.target.value)} name="years"/>
+                        </div>
+                        <div class="mb-3">
+                            <label>Employee Awards: </label>
+                            <input type='number' value={parseInt(awards)} onChange={e => setAwards(e.target.value)} name="awards"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Title: </label>
+                            <select class="custom-select custom-select-lg mb-3" type='dropdown' onChange={e => setTitleId(e.target.value)} name="title_id">
+                                <option>        </option>
+                                {titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
+                            </select>
+                        </div>
+                        <input class="btn btn-outline-dark" type="submit" />
+                    </form>
                 </div>
-                <br /><br />
-                <div>
-                    <label>Image</label>
-                    <input type='text' value={image} onChange={e => setImage(e.target.value)} name="image"/>
-                    <div class='text-danger'>{formErrors.image}</div>
-                </div>
-                <br /><br />
-                <div>
-                    <label>Years</label>
-                    <input type='number' value={parseInt(years)} onChange={e => setYears(e.target.value)} name="years"/>
-                </div>
-                <br /><br />
-                <div>
-                    <label>Employee Awards</label>
-                    <input type='number' value={parseInt(awards)} onChange={e => setAwards(e.target.value)} name="awards"/>
-                </div>
-                <br /><br />
-                <div class="form-group">
-                    <label class="form-label">Title</label>
-                    <select class="custom-select custom-select-lg mb-3" type='dropdown' onChange={e => setTitleId(e.target.value)} name="title_id">
-                        <option>        </option>
-                        {titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
-                    </select>
-                </div>
-                <br /><br />
-                <input class="btn btn-outline-dark" type="submit" />
-            </form>
+            </div>
         </div>
     )
 }

@@ -65,32 +65,40 @@ const EditEmployeeForm = props => {
     }
 
     return(
-        <div>
-            <br />
-            <h2>Edit Your Employee</h2>
-            <form onSubmit={update}><br />
-                <label>Name: </label>
-                <input type='text' value={name} onChange={e => setName(e.target.value)} name="name" />
-                <div class='text-danger'>{errors.name}</div>
-                <br /><br />
-                <label>Image: </label>
-                <input type='text' value={image} onChange={e => setImage(e.target.value)} name="image" />
-                <div class='text-danger'>{errors.name}</div>
-                <br /><br />
-                <label>Years: </label>
-                <input type='number' value={years} onChange={e => setYears(e.target.value)} name="years" />
-                <br /><br />
-                <label>Employee Awards: </label>
-                <input type='number' value={parseInt(awards)} onChange={e => setAwards(e.target.value)} name="awards"/>
-                <br /><br />
-                <label>Title: </label>
-                <select type='dropdown' onChange={e => setTitleId(e.target.value)} name="title_id">
-                    <option value='0'>        </option>
-                    {titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
-                </select>
-                <br /><br />
-                <input class="btn btn-outline-dark" type="submit" value="Edit Employee" />
-            </form>
+        <div class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h2>Edit Your Employee</h2><br />
+                    <form onSubmit={update}>
+                        <div class="mb-3">
+                            <label>Name: </label>
+                            <input type='text' value={name} onChange={e => setName(e.target.value)} name="name" />
+                            <div class='text-danger'>{errors.name}</div>
+                        </div>
+                        <div class="mb-3">
+                            <label>Image: </label>
+                            <input type='text' value={image} onChange={e => setImage(e.target.value)} name="image" />
+                            <div class='text-danger'>{errors.name}</div>     
+                        </div>      
+                        <div class="mb-3">
+                            <label>Years: </label>
+                            <input type='number' value={years} onChange={e => setYears(e.target.value)} name="years" />                
+                        </div>
+                        <div class="mb-3">
+                            <label>Employee Awards: </label>
+                            <input type='number' value={parseInt(awards)} onChange={e => setAwards(e.target.value)} name="awards"/>
+                        </div>  
+                        <div class="mb-3">              
+                            <label>Title: </label>
+                            <select type='dropdown' onChange={e => setTitleId(e.target.value)} name="title_id">
+                                <option value='0'>        </option>
+                                {titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
+                            </select>   
+                        </div>             
+                        <input class="btn btn-outline-dark" type="submit" value="Edit Employee" />
+                    </form>
+                </div>
+            </div>
         </div>
     )
 }
