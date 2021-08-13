@@ -22,7 +22,7 @@ class App extends React.Component {
                 <a class="nav-link active" aria-current="page" href="#"><Link to="/titles">Titles</Link></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#"><Link to='/employees'>Employees</Link></a>
+                <a class="nav-link active" aria-current="page" href="#"><Link to='/schedule'>Schedule</Link></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#"><Link to='/about'>About</Link></a>
