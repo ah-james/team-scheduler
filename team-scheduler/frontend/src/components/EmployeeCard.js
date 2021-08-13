@@ -31,17 +31,19 @@ const EmployeeCard = props => {
   };
 
   return(
-      <div class="col-md-3 border border-dark m-4 p-4">
-          <h2>{props.employee.attributes.name}</h2>
-          <img src={props.employee.attributes.image} alt="employee" />
-          <p>Experience: {props.employee.attributes.years} Years</p>
-          <p>Employee of the Month: {props.employee.attributes.awards}</p>
-          <div class="btn-group">
-              <button class="btn btn-outline-dark" name="delete" onClick={() => handleDelete()}>Fire</button>
-              <button class="btn btn-outline-dark" onClick={() => props.handleEdit(props.employee)}>Edit</button>
-              <button class="btn btn-outline-dark" name='award' onClick={() => addAward(props.employee)}>Award</button>
-          </div>
+    <div class="col">
+      <div class="card shadow-sm">
+        <img class="bd-placeholder-img card-img-top" src={props.employee.attributes.image} alt="employee" />
+        <h2>{props.employee.attributes.name}</h2>
+        <p>Experience: {props.employee.attributes.years} Years</p>
+        <p>Employee of the Month: {props.employee.attributes.awards}</p>
+        <div class="btn-group">
+          <button class="btn btn-outline-dark" name="delete" onClick={() => handleDelete()}>Fire</button>
+          <button class="btn btn-outline-dark" onClick={() => props.handleEdit(props.employee)}>Edit</button>
+          <button class="btn btn-outline-dark" name='award' onClick={() => addAward(props.employee)}>Award</button>
+        </div>
       </div>
+    </div>
   )
 }
 

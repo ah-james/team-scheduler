@@ -43,10 +43,13 @@ const EmployeesContainer = props => {
     return(
         <div>
             {employeeId ? <EditEmployeeForm resetEmployeeId={resetEmployeeId} employeeId={employeeId} /> : <EmployeeForm />}
-            <br/><br/>
-            <div class="row">
-                {employees.map((employee) => 
-                    <EmployeeCard key={employee.id} employee={employee} handleEdit={handleEdit} delete={() => handleDelete(employee.id)} />)}
+            <div class="album py-5 bg-light">
+                <div class='container'>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        {employees.map((employee) => 
+                            <EmployeeCard key={employee.id} employee={employee} handleEdit={handleEdit} delete={() => handleDelete(employee.id)} />)}
+                    </div>
+                </div>
             </div>
         </div>
     )
