@@ -13,10 +13,14 @@ const TitleShowContainer = props => {
         <div>
             <h2>{titleDetails.attributes.title_name} Employees</h2>
             <h3>{titleDetails.attributes.description}</h3>
-            <div class="row">
-                {employees.filter(employee => employee.attributes.title_id === parseInt(props.match.params.id)).map(filteredEmployee => (
-                    <EmployeeCard employee={filteredEmployee} />
-                ))}
+            <div class="album py-5 bg-light">
+                <div class='container'>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        {employees.filter(employee => employee.attributes.title_id === parseInt(props.match.params.id)).map(filteredEmployee => (
+                            <EmployeeCard employee={filteredEmployee} />
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     )
