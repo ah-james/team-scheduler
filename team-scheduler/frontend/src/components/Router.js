@@ -5,7 +5,7 @@ import HomeContainer from '../containers/HomeContainer'
 import EmployeesContainer from '../containers/EmployeesContainer'
 import TitlesContainer from '../containers/TitlesContainer'
 import AboutPage from './AboutPage'
-import TitleShowPage from './TitleShowPage'
+import TitleShowContainer from '../containers/TitleShowContainer'
 
 export const Router = () => {
     return(
@@ -14,7 +14,7 @@ export const Router = () => {
             <Route path='/schedule' component={HomeContainer} />
             <Route exact path='/titles' component={TitlesContainer} />
             <Route path='/about' component={AboutPage} />
-            <Route path='/titles/:id' component={TitleShowPage} />
+            <Route path='/titles/:id' component={TitleShowContainer} />
         </Switch>
     )
 }
