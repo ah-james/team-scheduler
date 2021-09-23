@@ -3,7 +3,7 @@ import react from 'react';
 const Search = props => {
     return(
         <div>
-            <input placeholder='Search for an Employee' />
+            <input type='text' placeholder='Search for an Employee' onChange={props.handleInputChange} />
         </div>
     )
 }

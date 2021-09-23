@@ -6,9 +6,11 @@ import * as titlesActions from '../actions/titlesActions'
 import EmployeeForm from '../components/EmployeeForm'
 import EditEmployeeForm from '../components/EditEmployeeForm'
 import EmployeeCard from '../components/EmployeeCard'
+import Search from '../components/Search'
 
 const EmployeesContainer = props => {
     const [employeeId, setEmployeeId] = useState(false)
+    const [search, setSearch] = useState('')
 
     // use redux's useSelector hook instead of mapStateToProps
     const employees = useSelector(state => state.employees)
@@ -40,10 +42,16 @@ const EmployeesContainer = props => {
         await dispatch(employeeActions.deleteEmployee(employee))
     }
 
+    const handleInputChange = (event) => {
+        setSearch(event.target.value)
+        // console.log(search)
+    }
+
     return(
         <div>
             {employeeId ? <EditEmployeeForm resetEmployeeId={resetEmployeeId} employeeId={employeeId} /> : <EmployeeForm />}
             <div class="album py-5 bg-light">
+                <Search handleInputChange={handleInputChange} />
                 <div class='container'>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         {employees.map((employee) => 
