@@ -17,6 +17,11 @@ const EmployeesContainer = props => {
     // save useDispatch hook to a variable for ease of use
     const dispatch = useDispatch()
 
+    const filteredEmployees = search.length === 0 ? employees : 
+        employees.filter(employee =>
+            employee.attributes.name.toLowerCase().includes(search.toLowerCase())    
+        )
+
     const loadPage = useCallback(async () => {
         try {
             await dispatch(employeeActions.fetchEmployees())
@@ -54,7 +59,7 @@ const EmployeesContainer = props => {
                 <Search handleInputChange={handleInputChange} />
                 <div class='container'>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        {employees.map((employee) => 
+                        {filteredEmployees.map((employee) => 
                             <EmployeeCard key={employee.id} employee={employee} handleEdit={handleEdit} delete={() => handleDelete(employee.id)} />)}
                     </div>
                 </div>
