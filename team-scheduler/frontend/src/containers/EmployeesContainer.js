@@ -56,7 +56,9 @@ const EmployeesContainer = props => {
         <div>
             {employeeId ? <EditEmployeeForm resetEmployeeId={resetEmployeeId} employeeId={employeeId} /> : <EmployeeForm />}
             <div class="album py-5 bg-light">
-                <Search handleInputChange={handleInputChange} />
+                <div id='search-field'>
+                    <Search handleInputChange={handleInputChange} />
+                </div>
                 <div class='container'>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         {filteredEmployees.map((employee) => 
