@@ -1,19 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { addEmployee } from '../actions/employeesActions'
 
+const initialState = {
+    name: '',
+    image: '',
+    years: 0,
+    awards: 0,
+    title_id: ''
+}
+
+const formReducer = (state, action) => {
+    switch (action.type) {
+        case "HANDLE_INPUT":
+            return {
+                ...state,
+                [action.field]: action.payload,
+            }
+        default:
+            return state
+    }
+}
 
 const EmployeeForm = props => {
-    const [name, setName] = useState('')
-    const [image, setImage] = useState('')
-    const [years, setYears] = useState(0)
-    const [awards, setAwards] = useState(0)
-    const [title_id, setTitleId] = useState('')
+    // const [name, setName] = useState('')
+    // const [image, setImage] = useState('')
+    // const [years, setYears] = useState(0)
+    // const [awards, setAwards] = useState(0)
+    // const [title_id, setTitleId] = useState('')
     const [formErrors, setFormErrors] = useState({
-        name: '',
+        errorName: '',
         image: ''
     })
+
+    // implement useReducer
+    const [formState, dispatchState] = useReducer(formReducer, initialState)
 
     const titles = useSelector(state => state.titles)
     const dispatch = useDispatch()
@@ -22,31 +44,31 @@ const EmployeeForm = props => {
         // let formErrors = {}
         let formIsValid = true
 
-        if (!name) {
+        if (!formState.name) {
             formIsValid = false
             // formErrors['name'] = '*Please enter a name'
             setFormErrors({ 
                 ...formErrors,
-                [name]: '*Please enter a name' 
+                errorName: '*Please enter a name' 
             })
         }
 
-        if (!image) {
+        if (!formState.image) {
             formIsValid = false
             // formErrors['image'] = '*Please enter an image'
             setFormErrors({ 
                 ...formErrors,
-                [image]: '*Please enter an image' 
+                image: '*Please enter an image' 
             })
         }
 
-        if (name) {
-            if (!name.match(/[a-zA-Z]/)) {
+        if (formState.name) {
+            if (!formState.name.match(/[a-zA-Z]/)) {
                 formIsValid = false
                 // formErrors['name'] = '*Please only use letters'
                 setFormErrors({
                     ...formErrors, 
-                    [name]: '*Please only use letters' 
+                    errorName: '*Please only use letters' 
                 })
             }
         }
@@ -55,17 +77,25 @@ const EmployeeForm = props => {
         return formIsValid
     }
 
+    const handleTextChange = (event) => {
+        dispatchState({
+            type: "HANDLE_INPUT",
+            field: event.target.name,
+            payload: event.target.value,
+        })
+    }
+
     const handleSubmit = event => {
         event.preventDefault()
         if (validateForm()) {
-            dispatch(addEmployee(name, image, years, awards, title_id))
+            dispatch(addEmployee(formState.name, formState.image, formState.years, formState.awards, formState.title_id))
         }
-        setName('')
-        setImage('')
-        setYears(0)
-        setAwards(0)
-        setTitleId('')
-        setFormErrors({})
+        // initialState.name('')
+        // initialState.image('')
+        // initialState.years(0)
+        // initialState.awards(0)
+        // initialState.title_id('')
+        // setFormErrors({})
     }   
 
     return(
@@ -76,25 +106,25 @@ const EmployeeForm = props => {
                     <form onSubmit={handleSubmit}>
                         <div class="mb-3">
                             <label for='name'>Name: </label>
-                            <input id='name' type='text' value={name} onChange={e => setName(e.target.value)} name="name"/>
+                            <input id='name' type='text' value={formState.name} onChange={e => handleTextChange(e)} name="name"/>
                             <div class='text-danger'>{formErrors.name}</div>
                         </div>
                         <div class="mb-3">
                             <label>Image: </label>
-                            <input type='text' value={image} onChange={e => setImage(e.target.value)} name="image"/>
+                            <input type='text' value={formState.image} onChange={e => handleTextChange(e)} name="image"/>
                             <div class='text-danger'>{formErrors.image}</div>
                         </div>
                         <div class="mb-3">
                             <label>Years: </label>
-                            <input type='number' value={parseInt(years)} onChange={e => setYears(e.target.value)} name="years"/>
+                            <input type='number' value={parseInt(formState.years)} onChange={e => handleTextChange(e)} name="years"/>
                         </div>
                         <div class="mb-3">
                             <label>Employee Awards: </label>
-                            <input type='number' value={parseInt(awards)} onChange={e => setAwards(e.target.value)} name="awards"/>
+                            <input type='number' value={parseInt(formState.awards)} onChange={e => handleTextChange(e)} name="awards"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Title: </label>
-                            <select class="custom-select custom-select-lg mb-3" type='dropdown' onChange={e => setTitleId(e.target.value)} name="title_id">
+                            <select class="custom-select custom-select-lg mb-3" type='dropdown' onChange={e => handleTextChange(e)} name="title_id">
                                 <option>        </option>
                                 {titles.map((title, id) => <option value={id+1}>{title.attributes.title_name}</option>)}
                             </select>

@@ -49,7 +49,6 @@ const EmployeesContainer = props => {
 
     const handleInputChange = (event) => {
         setSearch(event.target.value)
-        // console.log(search)
     }
 
     return(
