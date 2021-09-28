@@ -90,12 +90,12 @@ const EmployeeForm = props => {
         if (validateForm()) {
             dispatch(addEmployee(formState.name, formState.image, formState.years, formState.awards, formState.title_id))
         }
-        // initialState.name('')
-        // initialState.image('')
-        // initialState.years(0)
-        // initialState.awards(0)
-        // initialState.title_id('')
-        // setFormErrors({})
+        formState.name = ''
+        formState.image = ''
+        formState.years = 0
+        formState.awards = 0
+        formState.title_id = ''
+        setFormErrors({})
     }   
 
     return(
