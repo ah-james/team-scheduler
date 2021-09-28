@@ -76,11 +76,11 @@ const EditEmployeeForm = props => {
         const { employeeId } = props
         const employee = employees.find(employee => employee.id === employeeId)
         setId(employeeId)
-        formState.name = employee.attributes.name
-        formState.image = employee.attributes.image
-        formState.years = employee.attributes.years
-        formState.awards = employee.attributes.awards
-        formState.title_id = employee.attributes.title_id
+        // formState.name = employee.attributes.name
+        // formState.image = employee.attributes.image
+        // formState.years = employee.attributes.years
+        // formState.awards = employee.attributes.awards
+        // formState.title_id = employee.attributes.title_id
     }
 
     useEffect(() => findEmployee(), [findEmployee])
