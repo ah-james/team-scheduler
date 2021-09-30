@@ -107,7 +107,7 @@ const EmployeeForm = props => {
                         <div class="mb-3">
                             <label for='name'>Name: </label>
                             <input id='name' type='text' value={formState.name} onChange={e => handleTextChange(e)} name="name"/>
-                            <div class='text-danger'>{formErrors.name}</div>
+                            <div class='text-danger'>{formErrors.errorName}</div>
                         </div>
                         <div class="mb-3">
                             <label>Image: </label>
